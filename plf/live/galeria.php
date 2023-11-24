@@ -234,10 +234,10 @@
               <div class="col-sm-6">
                 <div class="widget">
                   <h5 class="widget-title font-alt">Fale Conosco</h5>
-                  <form id="contactForm" role="form" method="post" action="php/contact.php">
+                  <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
-                      <input class="form-control" type="text" id="name" name="name" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
+                      <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
@@ -258,7 +258,6 @@
                       <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
                     </div>
                   </form>
-                  
                 </div>
               </div>
 
