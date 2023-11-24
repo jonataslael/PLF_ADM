@@ -1065,7 +1065,10 @@ blockquote {
     padding: 10px 5%;
     text-align: center;
     height: 370px;
-
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 
