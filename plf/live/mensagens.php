@@ -73,6 +73,7 @@ include("php/banco.php");
               <li><a href="index.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
               <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
               <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="mensagens.php"><span class="icon-browser" aria-hidden="true"></span> Mensagens</a></li>
               <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
@@ -175,7 +176,7 @@ include("php/banco.php");
                         <div class="panel-collapse collapse" id="supportsupport'.$linha['id'].'">
                           <div class="panel-body">E-mail: '.$linha['email'].'
                           </div>
-                          <div class="panel-body">Telefone:: '.$linha['telefone'].'
+                          <div class="panel-body">Telefone: '.$linha['telefone'].'
                           </div>
                           <div class="panel-body">Assunto: '.$linha['assunto'].'
                           </div>

@@ -69,6 +69,7 @@
               <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
               <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
               <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="mensagens.php"><span class="icon-browser" aria-hidden="true"></span> Mensagens</a></li>
               <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
