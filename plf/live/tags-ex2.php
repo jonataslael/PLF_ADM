@@ -218,7 +218,7 @@
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
+                      <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
@@ -230,7 +230,7 @@
 
               <div class="col-sm-3">
                 <div class="widget">
-                  <h5 class="widget-title">NOSSAS PLATAFORMAS</h5>
+                  <h5 class="widget-title">Nossas Plataformas</h5>
                   <ul class="widget-posts">
                     <li class="clearfix">
                       <div class="widget-posts-image.rod"><a href="https://flucianofeijao.com.br/flf/"><img src="assets/images/Marca FLF 2022 nome branco.png" alt="Post Thumbnail"/></a></div>

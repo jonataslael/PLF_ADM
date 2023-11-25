@@ -293,7 +293,7 @@
 
               <div class="col-sm-3">
                 <div class="widget">
-                  <h5 class="widget-title">NOSSAS PLATAFORMAS</h5>
+                  <h5 class="widget-title">Nossas Plataformas</h5>
                   <ul class="widget-posts">
                     <li class="clearfix">
                       <div class="widget-posts-image.rod"><a href="https://flucianofeijao.com.br/flf/"><img src="assets/images/Marca FLF 2022 nome branco.png" alt="Post Thumbnail"/></a></div>

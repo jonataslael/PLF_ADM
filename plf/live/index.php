@@ -268,7 +268,7 @@
 
               <div class="col-sm-6">
                 <div class="widget">
-                  <h5 class="widget-title font-alt">Fale Conosco</h5>
+                  <h5 class="widget-title">Fale Conosco</h5>
                   <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
@@ -286,8 +286,8 @@
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
-                      <p class="help-block text-danger"></p>
+                      <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
+                      <p class=" text-danger"></p>
                     </div>
                     <div class="text-center">
                       <button class="btn btn-block btn-round btn-d" type="submit">Enviar</button>
@@ -298,7 +298,7 @@
 
               <div class="col-sm-3">
                 <div class="widget">
-                  <h5 class="widget-title">NOSSAS PLATAFORMAS</h5>
+                  <h5 class="widget-title">Nossas Plataformas</h5>
                   <ul class="widget-posts">
                     <li class="clearfix">
                       <div class="widget-posts-image.rod"><a href="https://flucianofeijao.com.br/flf/"><img src="assets/images/Marca FLF 2022 nome branco.png" alt="Post Thumbnail"/></a></div>
