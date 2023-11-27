@@ -53,7 +53,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
   </head>
-  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="10">
     <main>
       <div class="page-loader">
         <div class="loader">Loading...</div>
@@ -66,10 +66,11 @@
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
               
-              <li><a href="index.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
-              <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
-              <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
-              <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
+            <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
+              <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
+              <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="mensagens-adm.php"><span class="icon-browser" aria-hidden="true"></span> Mensagens</a></li>
+              <li><a href="sobre-adm.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
               <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
@@ -123,7 +124,7 @@
         </div>
       </nav>
       <div class="main">
-      <section class="home-section home-fade home-full-height bg-dark-60 agency-page-header" id="home" data-background="assets/images/agency/principal.png">
+      <section class="home-section home-fade home-full-height bg-dark-60 agency-page-header" id="home" data-background="assets/images/eventos.png">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -133,122 +134,74 @@
           </div>
         </section>
       <div class="main">
-        <section class="module pt-0 pb-0" id="about">
-          <div class="row position-relative m-0">
-            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/principal-imgs/principal-1.jpg"></div>
-            <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h2 class="module-title font-alt align-left">Bem Vindo!!!</h2>
-                  <div class="module-subtitle font-serif align-left">O Portfólio Luciano Feijão é um espaço dedicado aos registros de momentos e eventos do grupo Luciano Feijão. Aqui você verá fotos de grandes histórias através das lentes. Navegue pelo nosso Portfólio e permita-se mergulhar na onda azul.</div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="module">
+        <section class="module-small">
           <div class="container">
-            <div class="row multi-columns-row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Nossos Trabalhos</h2>
+          
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="post">
+                  <div class="post-thumbnail"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Blog Featured Image"/></div>
+                  <div class="post-header font-alt">
+                    <h1 class="post-title">9 estagiários VS 1 computador</h1>
+                    <div class="post-meta">By Nadson Nascimento | 09 de Agosto | 3 Comments | Fotografia, Estágio.
+                    </div>
+                  </div>
+                  <div class="post-entry">
+                    <p>No dia nove de Agosto de 2023, os estagiários da Faculdade Luciano Feijão, com bastante luta conseguiram montar e ligar um computador.</p>
+                    <p>Nove estagiários entusiasmados decidem montar um computador do zero, na Faculdade Luciano Feijão, que enfrentam desafios como peças defeituosas. O computador montado não apenas funciona perfeitamente, mas também fortalece os laços entre os estagiários e inspira outros estudantes na região.</p>
+                  </div>
+                </div>
+                <div class="post">
+                  <div class="post-thumbnail"><img src="assets/images/colação-wallpaper.png" alt="Blog Featured Image"/></div>
+                  <div class="post-header font-alt">
+                    <h1 class="post-title">Colação de Grau Direito 2023.2</h1>
+                    <div class="post-meta">By Nadson Nascimento | 23 Novembro | 3 Comments | Fotografia, Colação de Grau Cursos.
+                    </div>
+                  </div>
+                  <div class="post-entry">
+                    <p>No dia 23 de Outubro, os alunos dos cursos de Administração, Direito, Engenharia Civil e Psicologia formaram-se e subiram o degrau mais alto da jornada da graduação a Colação de Grau.</p>
+                    <p>Colar grau é a realização do sonho dos nossos brilhantes acadêmicos que agora ingressam no mercado de trabalho como profissionais dentro das suas áreas. A conquista do diploma é o primeiro passo para essa nova fase de sucesso da vida de cada um.</p>
+                  </div>
+                </div>
                 
               </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+              <div class="col-sm-12 col-md-3 col-md-offset-1 sidebar">
+                <div class="widget">
+                  <form role="form">
+                    <div class="search-box">
+                      <input class="form-control" type="text" placeholder="Search..."/>
+                      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                  </form>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+                
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Publicações Recentes</h5>
+                  <ul class="widget-posts">
+                    <li class="clearfix">
+                      <div class="widget-posts-image"><a href="tags-ex.php"><img src="assets/images/Colação de grau.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="tags-ex.php">Colação de Grau Cursos</a></div>
+                      </div>
+                    </li>
+                    <li class="clearfix">
+                      <div class="widget-posts-image"><a href="tags-ex2.php"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="tags-ex2.php">Estagiários vs PC</a></div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Tag</h5>
+                  <div class="tags font-serif"><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a>
+                  </div>
                 </div>
-              </div>
-
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 7"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 8"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 8"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 9"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 9"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 4"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 4"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 5"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 5"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 6"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 6"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
+                
               </div>
             </div>
           </div>
         </section>
-        <section class="module-small bg-dark">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
-                <div class="callout-text font-alt">
-                  <h3 class="callout-title">Curtiu? </h3>
-                  <p>Veja Nossa Coleção Completa.</p>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-b btn-round" href="galeria.php">Ver Mais</a></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <hr class="divider-w">
-        
         <div class="module-small bg-dark2">
           <div class="container">
             <div class="row">
@@ -268,7 +221,7 @@
 
               <div class="col-sm-6">
                 <div class="widget">
-                  <h5 class="widget-title">Fale Conosco</h5>
+                  <h5 class="widget-title font-alt">Fale Conosco</h5>
                   <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
@@ -287,10 +240,10 @@
                     </div>
                     <div class="form-group">
                       <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
-                      <p class=" text-danger"></p>
+                      <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
-                      <button class="btn btn-block btn-round btn-d" type="submit">Enviar</button>
+                      <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
                     </div>
                   </form>
                 </div>
@@ -323,7 +276,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-6">
-                <p class="copyright font-alt">&copy; 2023&nbsp;<a href="login_adm.php">PORTFÓLIO LUCIANO FEIJÃO</a>, Todos os Direitos Reservados</p>
+                <p class="copyright font-alt">&copy; 2023&nbsp;<a href="index.php">PORTFÓLIO LUCIANO FEIJÃO</a>, Todos os Direitos Reservados</p>
               </div>
               <div class="col-sm-6">
                 <div class="footer-social-links"><a href="https://www.facebook.com/flfeijao"><i class="fa fa-facebook"></i></a>

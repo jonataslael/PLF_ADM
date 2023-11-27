@@ -67,10 +67,10 @@
             <ul class="nav navbar-nav navbar-right">
               
               <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
-              <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
-              <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
-              <li><a href="mensagens.php"><span class="icon-browser" aria-hidden="true"></span> Mensagens</a></li>
-              <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
+              <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
+              <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="mensagens-adm.php"><i class="fa fa-fw">&#xF003;</i> Mensagens</a></li>
+              <li><a href="sobre-adm.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
               <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
@@ -136,7 +136,7 @@
       <div class="main">
         <section class="module pt-0 pb-0" id="about">
           <div class="row position-relative m-0">
-            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/principal-imgs/principal-1.jpg"></div>
+            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/principal-imgs/principal-1.jpg"><button class="btn btn-w btn-xs" type="button" style="margin-top:10px; float:right;"><i class="fa fa-fw">&#xF044;</i></button></div>
             <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
               <div class="row">
                 <div class="col-sm-12">
@@ -158,7 +158,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -166,7 +166,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -174,7 +174,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -183,7 +183,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 7"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 7"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -191,7 +191,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 8"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 8"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -199,7 +199,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 9"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 9"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -208,7 +208,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 4"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 4"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -216,7 +216,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 5"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 5"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -224,7 +224,7 @@
                 <div class="gallery-item">
                   <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 6"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 6"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                        <div class="gallery-icon"><span class="icon-edit"></span></div>
                       </div></a></div>
                 </div>
               </div>
@@ -241,7 +241,7 @@
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="galeria.php">Ver Mais</a></div>
+                <div class="callout-btn-box"><a class="btn btn-b btn-round" href="galeria-adm.php">Ver Mais</a></div>
               </div>
             </div>
           </div>

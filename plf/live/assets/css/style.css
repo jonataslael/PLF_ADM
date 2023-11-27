@@ -677,14 +677,14 @@ a,
 }
 
 .btn.btn-w {
-  background: rgba(255, 255, 255, 0.8);
-  color: #111;
+  background:transparent;
+  color: #ffffff;
 }
 
 .btn.btn-w:hover,
 .btn.btn-w:focus {
-  background: white;
-  color: #111;
+  background: transparent;
+  color: #ffffff;
 }
 
 .btn.btn-g {
@@ -723,13 +723,14 @@ a,
 }
 
 .btn.btn-b {
-  background: #111111;
-  color: #fff;
+  background: #ffffff;
+  color: #000000;
 }
 
 .btn.btn-b:hover,
 .btn.btn-b:focus {
-  background: rgba(17, 17, 17, 0.8);
+  background: #ffffff;
+  color: #000;
 }
 
 .btn-border-d {
@@ -768,7 +769,7 @@ a,
 
 .btn.btn-xs {
   padding: 4px 19px;
-  font-size: 10px;
+  font-size: 25px;
   letter-spacing: 0;
 }
 

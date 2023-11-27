@@ -1,3 +1,7 @@
+<?php 
+include("php/banco.php"); 
+?> 
+
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
   <head>
@@ -66,10 +70,11 @@
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
               
-              <li><a href="index.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
-              <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
-              <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
-              <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
+              <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
+              <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
+              <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="mensagens-adm.php"><span class="icon-browser" aria-hidden="true"></span> Mensagens</a></li>
+              <li><a href="sobre-adm.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
               <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
@@ -123,132 +128,68 @@
         </div>
       </nav>
       <div class="main">
-      <section class="home-section home-fade home-full-height bg-dark-60 agency-page-header" id="home" data-background="assets/images/agency/principal.png">
+        <section class="module bg-dark-30 about-page-header" data-background="assets/images/about_bg.jpg">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
-                
-              </div>
-            </div>
-          </div>
-        </section>
-      <div class="main">
-        <section class="module pt-0 pb-0" id="about">
-          <div class="row position-relative m-0">
-            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/principal-imgs/principal-1.jpg"></div>
-            <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h2 class="module-title font-alt align-left">Bem Vindo!!!</h2>
-                  <div class="module-subtitle font-serif align-left">O Portfólio Luciano Feijão é um espaço dedicado aos registros de momentos e eventos do grupo Luciano Feijão. Aqui você verá fotos de grandes histórias através das lentes. Navegue pelo nosso Portfólio e permita-se mergulhar na onda azul.</div>
-                  
-                </div>
+                <h1 class="module-title font-alt mb-0">Texto</h1>
               </div>
             </div>
           </div>
         </section>
         <section class="module">
           <div class="container">
-            <div class="row multi-columns-row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Nossos Trabalhos</h2>
-                
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 7"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 8"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 8"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 9"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 9"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 4"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 4"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 5"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 5"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 6"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 6"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="module-small bg-dark">
-          <div class="container">
             <div class="row">
-              <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
-                <div class="callout-text font-alt">
-                  <h3 class="callout-title">Curtiu? </h3>
-                  <p>Veja Nossa Coleção Completa.</p>
+              <div class="col-sm-8 col-sm-offset-2">
+                
+                <div role="tabpanel">
+                  <ul class="nav nav-tabs font-alt" role="tablist">
+                    <li class="active"><a href="#support" data-toggle="tab">Mensagens</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="support">Veja abaixo as pessoas que entraram em contato:
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-b btn-round" href="galeria.php">Ver Mais</a></div>
+                
+                <hr class="divider-w mt-10 mb-20">
+                <div class="panel-group" id="accordion">
+
+                <?php
+
+                  $sql = "select * from contact order by id desc"; 
+
+                   //executa o comando sql
+                    $consulta = $conexao->query($sql);
+                    
+                    //testar se deu certo o comando
+                    if($consulta){
+                        //verificando se existe o usuario
+                        if($consulta->num_rows > 0){
+                        //convertendo a consulta num array
+                        while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+                   echo '<div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#supportsupport'.$linha['id'].'">'.$linha['nome'].'</a></h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="supportsupport'.$linha['id'].'">
+                          <div class="panel-body">E-mail: '.$linha['email'].'
+                          </div>
+                          <div class="panel-body">Telefone: '.$linha['telefone'].'
+                          </div>
+                          <div class="panel-body">Assunto: '.$linha['assunto'].'
+                          </div>
+                        </div>
+                      </div>';
+                        } } };
+                ?>
+
+                </div>
               </div>
             </div>
           </div>
         </section>
-        
-        <hr class="divider-w">
-        
         <div class="module-small bg-dark2">
           <div class="container">
             <div class="row">
@@ -268,11 +209,11 @@
 
               <div class="col-sm-6">
                 <div class="widget">
-                  <h5 class="widget-title">Fale Conosco</h5>
-                  <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
+                  <h5 class="widget-title font-alt">Fale Conosco</h5>
+                  <form id="contactForm" role="form" method="post" action="php/contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
-                      <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
+                      <input class="form-control" type="text" id="name" name="name" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
@@ -286,13 +227,14 @@
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
-                      <p class=" text-danger"></p>
+                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
+                      <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
-                      <button class="btn btn-block btn-round btn-d" type="submit">Enviar</button>
+                      <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
                     </div>
                   </form>
+                  
                 </div>
               </div>
 
@@ -323,7 +265,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-6">
-                <p class="copyright font-alt">&copy; 2023&nbsp;<a href="login_adm.php">PORTFÓLIO LUCIANO FEIJÃO</a>, Todos os Direitos Reservados</p>
+                <p class="copyright font-alt">&copy; 2023&nbsp;<a href="index.php">PORTFÓLIO LUCIANO FEIJÃO</a>, Todos os Direitos Reservados</p>
               </div>
               <div class="col-sm-6">
                 <div class="footer-social-links"><a href="https://www.facebook.com/flfeijao"><i class="fa fa-facebook"></i></a>
