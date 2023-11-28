@@ -54,6 +54,85 @@
     <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+
+  <?php
+
+          include("php/banco.php");
+
+          function enviarArq($error, $name, $tmp_name) {
+
+          include("php/banco.php");
+
+          if($error)
+          die("Error");
+
+          $pasta = "../assets/images/gallery/";
+          $name_arq = $name;
+          $new_name = $uniqid();
+          $extensao = strtolower(pathinfo($name_arq, PATHINFO_EXTENSION));
+
+          if($extensao != "jpg" && $extensao !="png")
+          die("Tipo de arquivo não aceito");
+
+          $path = $pasta . $new_name . "." . $extensao;
+          $upload_ok = move_uploaded_file($tmp_name, $path);
+
+          if($upload_ok){
+
+          $mysqli ->query("INSERT INTO arquivos(id, nome, local) VALUES(null, 'new_name', '$path')") or die($mysqli->error);
+          return true; 
+
+          } else 
+
+          return false; 
+
+          }
+
+          if(isset($_FILES['arquivos'])) {
+
+          $arquivos = $_FILES['arquivos'];
+          $tudo_crt = true;
+
+          foreach($arquivos['name'] as $index => $arq) {
+
+          $upload_ok = enviarArq($arquivos['error'] [$index], $arquivos['name'], $arquivos['path']);
+
+          if(upload_ok)
+          $tudo_crt = false;
+
+          }
+
+          if($tudo_crt)
+          echo "<p>ok</p>";
+
+          else
+          echo "<p>error</p>";
+          
+          }
+
+
+          //delete
+          if(isset($_GET['delete'])) {
+
+          $id = intval($_GET['delete']);
+          $sql_query = $mysqli->query("SELECT * FROM arquivos WHERE id = '$id'") or die($mysqli->error);
+          $arquivo = sql_query->fetch_assoc();
+
+          if(unlink($arquivo['path'])) {
+
+          $delete_ok = mysqli->query("DELETE FROM arquivos WHERE id = '$id'") or die($mysqli->error);
+
+          if(delete_ok)
+          echo "<p>ok</p>";
+
+          }
+
+          }
+
+          
+
+?>
+
     <main>
       <div class="page-loader">
         <div class="loader">Loading...</div>
@@ -139,19 +218,19 @@
 
           <div class="row multi-columns-row" style="margin-bottom:30px;">
               
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                
-              <button class="btn btn-warning" type="button"><i class="fa fa-fw">&#xF044;</i> Editar</button>
-              <button class="btn btn-d btn-round" type="submit"><i class="fa fa-fw">&#xF055;</i> Adicionar</button>
-            
+              <div class="col-sm-6 col-md-4 col-lg-4">
+              
+                  <form method="POST" enctype="multipart/form-data">
+                  <label for="arquivos[]"><i class="fa fa-fw">&#xF055;</i> Enviar arquivo</label>
+                  <input type="file" name="arquivos[]" id="arquivos[]" accept="image/*">
+                  <button class="btn btn-d btn-round" type="submit" id="enviarArq"><i class="fa fa-fw">&#xF055;</i> Adicionar</button>
+                  </form>
+
               </div>
            </div>    
-
-            <div class="row multi-columns-row">
-              
-              <div class="col-sm-6 col-md-4 col-lg-4">
+           <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
+                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
                       <div class="gallery-caption">
                         <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
                       </div></a></div>

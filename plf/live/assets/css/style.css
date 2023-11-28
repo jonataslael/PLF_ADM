@@ -833,6 +833,24 @@ a,
 }
 
 /* Forms size */
+
+body {
+  font-family: Helvetica;
+}
+input[type="file"] {
+  display: none;
+}
+label {
+  padding: 20px 10px;
+  width: 200px;
+  background-color: #4054B2;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+}
 .input-lg,
 .form-horizontal .form-group-lg .form-control {
   height: 50px;

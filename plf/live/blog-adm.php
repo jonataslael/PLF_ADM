@@ -66,10 +66,10 @@
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
               
-            <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
+              <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
               <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
               <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
-              <li><a href="mensagens-adm.php"><span class="icon-browser" aria-hidden="true"></span> Mensagens</a></li>
+              <li><a href="mensagens-adm.php"><i class="fa fa-fw">&#xF003;</i> Mensagens</a></li>
               <li><a href="sobre-adm.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
