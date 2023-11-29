@@ -53,85 +53,65 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
   </head>
-  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
 
   <?php
 
-          include("php/banco.php");
+  include("../php/banco.php");
 
-          function enviarArq($error, $name, $tmp_name) {
+  if(isset($_GET['deletar'])) {
 
-          include("php/banco.php");
+    $id = intval($_GET['deletar']);
+    $sql_query = $mysqli-> {"SELECT * FROM arquivos WHERE id = '$id'"};
+    $arquivo = $sql_query->fetch_assoc();
 
-          if($error)
-          die("Error");
+    if(unlink($arquivo['path'])) {
+      $deu_crt = $mysqli->{"DELETE FROM arquivos WHERE id = '$id'"};
+    }
 
-          $pasta = "../assets/images/gallery/";
-          $name_arq = $name;
-          $new_name = $uniqid();
-          $extensao = strtolower(pathinfo($name_arq, PATHINFO_EXTENSION));
+  };
 
-          if($extensao != "jpg" && $extensao !="png")
-          die("Tipo de arquivo não aceito");
+  function enviarArq($error, $name, $tmp_name) {
+    
+    include("../php/banco.php");
 
-          $path = $pasta . $new_name . "." . $extensao;
-          $upload_ok = move_uploaded_file($tmp_name, $path);
+      $pasta = "C:/xampp/htdocs/plf/live/assets/images/";
+      $nome = $name;
+      $new_name = uniqid();
+      $extensao = strtolower(pathinfo($nome,PATHINFO_EXTENSION));
 
-          if($upload_ok){
+      if($extensao != "jpg" && $extensao != "png") echo 'tipo n aceito';
 
-          $mysqli ->query("INSERT INTO arquivos(id, nome, local) VALUES(null, 'new_name', '$path')") or die($mysqli->error);
-          return true; 
+      $path = $arquivo["tmp_name"] ; $pasta . $new_name . "." . $extensao;
 
-          } else 
+      $deu_crt = move_uploaded_file($tmp_name, $pasta . $new_name . "." . $extensao );
 
-          return false; 
+      if($deu_crt) {
+        $mysqli->query("INSERT INTO arquivos (id, nome, local) VALUES(null, '$new_name', '$path')");
 
-          }
+        return true; } else return false;
 
-          if(isset($_FILES['arquivos'])) {
+  };
 
-          $arquivos = $_FILES['arquivos'];
-          $tudo_crt = true;
+    if(isset($_FILES['arquivos'])) {
+      $arquivo = $_FILES['arquivos'];
 
-          foreach($arquivos['name'] as $index => $arq) {
+      $tudo_crt = true;
 
-          $upload_ok = enviarArq($arquivos['error'] [$index], $arquivos['name'], $arquivos['path']);
+      foreach($arquivos['name'] as $index-> $arq)
 
-          if(upload_ok)
-          $tudo_crt = false;
+      $deu_crt = enviarArq($arquivos['error'][$index], $arquivos['name'][$index], $arquivos['tmp_name'][$index]);
 
-          }
+      if(!$deu_crt) $tudo_crt = false;
 
-          if($tudo_crt)
-          echo "<p>ok</p>";
+    };
 
-          else
-          echo "<p>error</p>";
-          
-          }
+    $sql_query = $mysqli->{"SELECT * FROM arquivos"};
+    
+  ?>
 
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
 
-          //delete
-          if(isset($_GET['delete'])) {
-
-          $id = intval($_GET['delete']);
-          $sql_query = $mysqli->query("SELECT * FROM arquivos WHERE id = '$id'") or die($mysqli->error);
-          $arquivo = sql_query->fetch_assoc();
-
-          if(unlink($arquivo['path'])) {
-
-          $delete_ok = mysqli->query("DELETE FROM arquivos WHERE id = '$id'") or die($mysqli->error);
-
-          if(delete_ok)
-          echo "<p>ok</p>";
-
-          }
-
-          }
-
-          
-
-?>
+  
 
     <main>
       <div class="page-loader">
@@ -220,88 +200,50 @@
               
               <div class="col-sm-6 col-md-4 col-lg-4">
               
-                  <form method="POST" enctype="multipart/form-data">
-                  <label for="arquivos[]"><i class="fa fa-fw">&#xF055;</i> Enviar arquivo</label>
-                  <input type="file" name="arquivos[]" id="arquivos[]" accept="image/*">
-                  <button class="btn btn-d btn-round" type="submit" id="enviarArq"><i class="fa fa-fw">&#xF055;</i> Adicionar</button>
+                  <form method="POST" enctype="multipart/form-data" action="">
+
+                  <label for="arquivo[]"><i class="fa fa-fw">&#xF055;</i> Enviar arquivo</label>
+
+                  <input multiple type="file" name="arquivos[]" id="arquivos[]" accept="image/*">
+
+                  <button class="btn btn-d btn-round" type="submit" id="enviarArq" name="enviarArq"><i class="fa fa-fw">&#xF055;</i> Adicionar</button>
+
                   </form>
 
-              </div>
-           </div>    
-           <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+                  <table border="1" cellpadding="10">
+                    <thead>
+                      <th>Preview</th>
+                      <th>Arquivo</th>
+                      <th>Local</th>
+                      <th></th>
+                    </thead>
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 7"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                      <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 8"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 8"/>
-                      <div class="gallery-caption">
-                      <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 9"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 9"/>
-                      <div class="gallery-caption">
-                      <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+                    <tbody>
+                      <?php
+                    
+                        while($arquivo = $sql_query->fetch_assoc()) {
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 4"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 4"/>
-                      <div class="gallery-caption">
-                      <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
+                      ?>
+
+                      <tr>
+                        <td><img src="<?php echo $arquivo['path']; ?>"> <?php echo $arquivo['nome']; ?></td>
+                        <td><?php echo $arquivo['nome']; ?></td>
+                        <td><?php echo $arquivo['path']; ?></td>
+                        <td><a href="galeria.php?deletar=<?php echo $arquivo['id']; ?>" >Deletar</a></td>
+                      </tr>
+
+                      <?php
+                      
+                        }
+                      
+                      ?>
+
+                    </tbody>
+                  </table>
+
               </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 5"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 5"/>
-                      <div class="gallery-caption">
-                      <div class="gallery-icon"><span class="icon-refresh" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 6"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 6"/>
-                      <div class="gallery-caption">
-                      <div class="gallery-icon"><span class="icon-edit" aria-hidden="true"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+          </div>   
+           
             </div>
           </div>
         </section>
