@@ -677,14 +677,14 @@ a,
 }
 
 .btn.btn-w {
-  background:transparent;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
+  color: #111;
 }
 
 .btn.btn-w:hover,
 .btn.btn-w:focus {
-  background: transparent;
-  color: #ffffff;
+  background: white;
+  color: #111;
 }
 
 .btn.btn-g {
@@ -723,14 +723,13 @@ a,
 }
 
 .btn.btn-b {
-  background: #ffffff;
-  color: #000000;
+  background: #111111;
+  color: #fff;
 }
 
 .btn.btn-b:hover,
 .btn.btn-b:focus {
-  background: #ffffff;
-  color: #000;
+  background: rgba(17, 17, 17, 0.8);
 }
 
 .btn-border-d {
@@ -769,7 +768,7 @@ a,
 
 .btn.btn-xs {
   padding: 4px 19px;
-  font-size: 25px;
+  font-size: 10px;
   letter-spacing: 0;
 }
 
@@ -833,24 +832,6 @@ a,
 }
 
 /* Forms size */
-
-body {
-  font-family: Helvetica;
-}
-input[type="file"] {
-  display: none;
-}
-label {
-  padding: 20px 10px;
-  width: 200px;
-  background-color: #4054B2;
-  color: #FFF;
-  text-transform: uppercase;
-  text-align: center;
-  display: block;
-  margin-top: 10px;
-  cursor: pointer;
-}
 .input-lg,
 .form-horizontal .form-group-lg .form-control {
   height: 50px;
@@ -1084,10 +1065,7 @@ blockquote {
     padding: 10px 5%;
     text-align: center;
     height: 370px;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+
 }
 
 

@@ -58,17 +58,7 @@
 
   include("../php/banco.php");
 
-  if(isset($_GET['deletar'])) {
-
-    $id = intval($_GET['deletar']);
-    $sql_query = $mysqli-> {"SELECT * FROM arquivos WHERE id = '$id'"};
-    $arquivo = $sql_query->fetch_assoc();
-
-    if(unlink($arquivo['path'])) {
-      $deu_crt = $mysqli->{"DELETE FROM arquivos WHERE id = '$id'"};
-    }
-
-  };
+  
 
   function enviarArq($error, $name, $tmp_name) {
     
@@ -105,11 +95,23 @@
 
     };
 
+    if(isset($_GET['deletar'])) {
+
+      $id = intval($_GET['deletar']);
+      $sql_query = $mysqli-> {"SELECT * FROM arquivos WHERE id = '$id'"};
+      $arquivo = $sql_query->fetch_assoc();
+  
+      if(unlink($arquivo['path'])) {
+        $deu_crt = $mysqli->{"DELETE FROM arquivos WHERE id = '$id'"};
+      }
+  
+    };
+
     $sql_query = $mysqli->{"SELECT * FROM arquivos"};
     
   ?>
 
-  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+  <body>
 
   
 

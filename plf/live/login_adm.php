@@ -80,43 +80,13 @@
         
                 <div class="formulario">
 
-                <?php 
-						      if(isset($_GET['login'])) {
-						        if(($_GET['login'])== 'erro'){
-							        echo '<script>
-                          swal({
-                            title: "ERRO AO FAZER LOGIN",
-                            text: "Ocorreu um erro ao fazer login, tente novamente",
-                            icon: "error",
-                          });
-                        </script>';
-						        }
-						        if(($_GET['login'])== 'semsessao'){
-						        	echo '<script>
-                              swal({
-                                title: "USUÁRIO NÃO AUTENTICADO",
-                                text: "Por favor faça login!",
-                                icon: "info",
-                              });
-                            </script>';
-						        }
-						        if(($_GET['login'])== 'logout'){
-						        	echo'<script>
-                              swal({
-                                title: "LOGOUT REALIZADO COM SUCESSO",
-                                text: "O logout foi realizado",
-                                icon: "success",
-                              });
-                            </script>';
-						        }
-						      }
-					      ?>
+                
 
                     <div class="title-form">
                       <h1><i class="icon icon-comments-o"></i>Login</h1>
                     </div>
         
-                    <form class="" action="../live/php/login.php" method="post">
+                    <form action="../live/php/login.php" method="post">
         
                         <span>
                             <input type="text" class="input-slide" id="email" name="email" placeholder="E-mail" autocomplete="off" required=""/>
