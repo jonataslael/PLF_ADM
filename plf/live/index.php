@@ -241,7 +241,7 @@
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-b btn-round" href="galeria.php">Ver Mais</a></div>
+                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="galeria.php">Ver Mais</a></div>
               </div>
             </div>
           </div>
