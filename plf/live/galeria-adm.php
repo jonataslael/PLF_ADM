@@ -56,9 +56,7 @@
 
   <?php
 
-  include("../php/banco.php");
-
-  
+  include("php/banco.php");
 
   function enviarArq($error, $name, $tmp_name) {
     
@@ -107,7 +105,19 @@
   
     };
 
-    $sql_query = $mysqli->{"SELECT * FROM arquivos"};
+    try {
+
+      if($_SESSION['login'] != "ok" ) {
+        echo 'você não está logado';
+      }; 
+      $sql = "SELECT * FROM arquivos";
+    
+      $sql_query = $conexao->query($sql);
+    
+    } catch (\Throwable $th) {
+      echo $th;
+      $loading =false;
+    }
     
   ?>
 
@@ -116,9 +126,11 @@
   
 
     <main>
+    
       <div class="page-loader">
         <div class="loader">Loading...</div>
-      </div>
+      </div> 
+      
       <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -204,7 +216,7 @@
               
                   <form method="POST" enctype="multipart/form-data" action="">
 
-                  <label for="arquivo[]"><i class="fa fa-fw">&#xF055;</i> Enviar arquivo</label>
+                  <label for="arquivos[]"><i class="fa fa-fw">&#xF055;</i> Enviar arquivo</label>
 
                   <input multiple type="file" name="arquivos[]" id="arquivos[]" accept="image/*">
 

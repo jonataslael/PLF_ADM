@@ -1,4 +1,33 @@
 <!DOCTYPE html>
+<?php
+
+$message = '';
+    
+      if(isset($_POST['enviar'])){ //check if form was submitted
+        try {
+          include 'php/banco.php';
+  
+          $nome = $_POST['nome'];
+          $email = $_POST['email'];
+          $telefone = $_POST['telefone'];
+          $assunto = $_POST['assunto'];
+  
+          $sql = "insert into contact values (null,'$nome','$email','$telefone','$assunto')";
+  
+          $inserir = $conexao->query($sql);
+          $message = "Success! You entered: ";
+         echo "<script>alert('hi') </script>";
+      } catch (\Throwable $th) {
+          echo $th;
+      }
+         
+      }  
+    
+      
+   
+    
+
+?>
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -237,7 +266,7 @@
               <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
                 <div class="callout-text font-alt">
                   <h3 class="callout-title">Curtiu? </h3>
-                  <p>Veja Nossa Coleção Completa.</p>
+                  <p>Veja Nossa Coleção Completa.<?php echo $message; ?></p>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
@@ -269,7 +298,7 @@
               <div class="col-sm-6">
                 <div class="widget">
                   <h5 class="widget-title">Fale Conosco</h5>
-                  <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
+                  <form id="contactForm" role="form" method="post" action="">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
                       <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
@@ -290,7 +319,7 @@
                       <p class=" text-danger"></p>
                     </div>
                     <div class="text-center">
-                      <button class="btn btn-block btn-round btn-d" type="submit">Enviar</button>
+                      <button class="btn btn-block btn-round btn-d" type="submit" name="enviar">Enviar</button>
                     </div>
                   </form>
                 </div>
