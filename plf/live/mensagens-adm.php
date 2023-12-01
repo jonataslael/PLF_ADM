@@ -169,20 +169,20 @@ include("php/banco.php");
                         //convertendo a consulta num array
                         while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
 
-                   echo '<div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#supportsupport'.$linha['id'].'">'.$linha['nome'].'</a></h4>
-                        </div>
-                        <div class="panel-collapse collapse" id="supportsupport'.$linha['id'].'">
-                          <div class="panel-body">E-mail: '.$linha['email'].'
+                   echo 
+                        '<div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title font-alt"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#supportsupport'.$linha['id'].'">'.$linha['nome'].'</a></h4>
                           </div>
-                          <div class="panel-body">Telefone: '.$linha['telefone'].'
+                          <div class="panel-collapse collapse" id="supportsupport'.$linha['id'].'">
+                            <div class="panel-body">E-mail: '.$linha['email'].'</div>
+                            <div class="panel-body">Telefone: '.$linha['telefone'].'</div>
+                            <div class="panel-body">Assunto: '.$linha['assunto'].'</div>
                           </div>
-                          <div class="panel-body">Assunto: '.$linha['assunto'].'
-                          </div>
-                        </div>
-                      </div>';
-                        } } };
+                        </div>';
+                       }
+                       }
+                    };
                 ?>
 
                 </div>
