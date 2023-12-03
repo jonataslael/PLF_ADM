@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 <?php
 
-$message = '';
-    
-      if(isset($_POST['enviar'])){ //check if form was submitted
-        try {
-          include 'php/banco.php';
-  
-          $nome = $_POST['nome'];
-          $email = $_POST['email'];
-          $telefone = $_POST['telefone'];
-          $assunto = $_POST['assunto'];
-  
-          $sql = "insert into contact values (null,'$nome','$email','$telefone','$assunto')";
-  
-          $inserir = $conexao->query($sql);
-          $message = "Success! You entered: ";
-         echo "<script>alert('hi') </script>";
-      } catch (\Throwable $th) {
-          echo $th;
-      }
-         
-      }  
-    
-      
-   
-    
+  include('php/banco.php');
 
 ?>
 <html lang="en-US" dir="ltr">
@@ -178,86 +154,38 @@ $message = '';
         </section>
         <section class="module">
           <div class="container">
-            <div class="row multi-columns-row">
               <div class="col-sm-6 col-sm-offset-3">
                 <h2 class="module-title font-alt">Nossos Trabalhos</h2>
-                
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
               </div>
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 7"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 8"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 8"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 9"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 9"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+          <?php
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
+          $sql = "select * from arquivo order by id desc"; 
+
+          //executa o comando sql
+            $consulta = $conexao->query($sql);
+            
+            //testar se deu certo o comando
+            if($consulta){
+                //verificando se existe o usuario
+                if($consulta->num_rows > 0){
+                //convertendo a consulta num array
+                while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+          echo 
+            '<div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 4"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 4"/>
+                    <div class="gallery-image"><a class="gallery" href="'.$linha['local'].'" title="Title 2"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
                       <div class="gallery-caption">
                         <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+                    </div></a></div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 5"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 5"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 6"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 6"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-            </div>
+              </div>';
+              }
+              }
+            };
+          ?>
+
           </div>
         </section>
         <section class="module-small bg-dark">
@@ -266,7 +194,7 @@ $message = '';
               <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
                 <div class="callout-text font-alt">
                   <h3 class="callout-title">Curtiu? </h3>
-                  <p>Veja Nossa Coleção Completa.<?php echo $message; ?></p>
+                  <p>Veja Nossa Coleção Completa.</p>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
@@ -298,7 +226,7 @@ $message = '';
               <div class="col-sm-6">
                 <div class="widget">
                   <h5 class="widget-title">Fale Conosco</h5>
-                  <form id="contactForm" role="form" method="post" action="">
+                  <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
                       <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>

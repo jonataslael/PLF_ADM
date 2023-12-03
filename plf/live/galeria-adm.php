@@ -4,43 +4,45 @@
 
   include("php/banco.php");
 
-  function enviarArq($error, $name, $tmp_name) {
-    
-    include("php/banco.php");
+  $foto = $_FILES['arquivo']['tmp_name'];
 
-      $pasta = "C:/xampp/htdocs/plf/live/assets/images/gallery";
-      $nome = $name;
-      $new_name = uniqid();
-      $extensao = strtolower(pathinfo($nome,PATHINFO_EXTENSION));
+  $pasta = 'assets/images/gallery/';
 
-      if($extensao != "jpg" && $extensao != "png") echo 'tipo n aceito';
-
-      $path = $pasta . $new_name . "." . $extensao;
-
-      $deu_crt = move_uploaded_file($path);
-
-      if($deu_crt = "ok") {
-        $mysqli->query("INSERT INTO arquivos (id, nome, local) VALUES(null, '$new_name', '$path')");
-
-        return true; } 
-        
-      else return false;
-
-  };
-
-    if(isset($_GET['deletar'])) {
-
-      $id = intval($_GET['deletar']);
-      $sql_query = $mysqli-> {"SELECT * FROM arquivos WHERE id = '$id'"};
-      $arquivo = $sql_query->fetch_assoc();
-  
-      if(unlink($arquivo['path'])) {
-        $deu_crt = $mysqli->{"DELETE FROM arquivos WHERE id = '$id'"};
+  if (!empty($foto)){
+      $file = getimagesize($foto);
+      
+      //TESTA A EXTENSÃO DO ARQUIVO
+      if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+          echo "erro - extensão não permitida";
+          exit();
       }
-  
-    };
 
-?>
+      //CAPTURA A EXTENSÃO DO ARQUIVO
+      $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+      //MONTA O CAMINHO DO NOVO DESTINO
+      $new_name = uniqid('', true);
+      $path = "{$pasta}". $new_name . '.' . $extensao;  
+      move_uploaded_file ($foto , $path );
+
+      $sql = "insert into arquivo (id, nome, local) VALUES('null', '$new_name', '$path')";
+      $add = $conexao->query($sql);
+
+} 
+
+    // if(isset($_GET['deletar'])) {
+
+    //   $id = intval($_GET['deletar']);
+    //   $sql_query = $mysqli-> {"SELECT * FROM arquivos WHERE id = '$id'"};
+    //   $arquivo = $sql_query->fetch_assoc();
+  
+    //   if(unlink($arquivo['path'])) {
+    //     $deu_crt = $mysqli->{"DELETE FROM arquivos WHERE id = '$id'"};
+    //   }
+  
+    // };
+    
+  ?>
 
 <html lang="en-US" dir="ltr">
   <head>
@@ -98,11 +100,9 @@
   </head>
   <body>
     <main>
-    
-      <div class="page-loader">
+    <div class="page-loader">
         <div class="loader">Loading...</div>
-      </div> 
-      
+      </div>
       <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -110,7 +110,6 @@
           </div>
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
-              
               <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
               <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
               <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
@@ -182,46 +181,46 @@
         <section class="module">
           <div class="container">
 
-          <div class="col-sm-6 col-md-4 col-lg-4">
-              
-                  <form method="POST" enctype="multipart/form-data" action="">
+          <div class="col-sm-12 col-md-12 col-lg-12">
 
-                  <label for="arquivo"><i class="fa fa-fw">&#xF055;</i> Enviar arquivo</label>
+                  <form class="" method="POST" enctype="multipart/form-data">
+                  
+                  <label for="arquivo"><i class="fa fa-fw">&#xF055;</i> Adicionar Foto </label>
+                  <input multiple type="file" name="arquivo" id="arquivo" accept="image/*">
 
-                  <input type="file" name="arquivo" id="arquivo" accept="image/*">
-
-                  <button class="btn btn-d btn-round" type="submit" id="enviarArq" name="enviarArq"><i class="fa fa-fw">&#xF055;</i> Adicionar</button>
+                  <input class="btn btn-d btn-round" type="submit" id="enviarArq" name="enviarArq">
 
                   </form>
 
-              </div>
+          </div>
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+                  <?php
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+                  $sql = "select * from arquivo order by id desc"; 
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+                  //executa o comando sql
+                    $consulta = $conexao->query($sql);
+                    
+                    //testar se deu certo o comando
+                    if($consulta){
+                        //verificando se existe o usuario
+                        if($consulta->num_rows > 0){
+                        //convertendo a consulta num array
+                        while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+                  echo 
+                     '<div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="gallery-item">
+                            <div class="gallery-image"><a class="gallery" href="'.$linha['local'].'" title="Title 2"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
+                              <div class="gallery-caption">
+                                <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                            </div></a></div>
+                        </div>
+                      </div>';
+                      }
+                      }
+                    };
+                  ?>
 
         </section>
         <div class="module-small bg-dark2">

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/11/2023 às 21:07
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 03/12/2023 às 22:25
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,54 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `portfolio_plf`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `arquivo`
+--
+
+CREATE TABLE `arquivo` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `local` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Despejando dados para a tabela `arquivo`
+--
+
+INSERT INTO `arquivo` (`id`, `nome`, `local`) VALUES
+(9, '656be3e13c3ba9.12795858', 'assets/images/gallery/656be3e13c3ba9.12795858.jpeg'),
+(10, '656be40700be51.40550914', 'assets/images/gallery/656be40700be51.40550914.jpeg'),
+(11, '656be422050811.75348756', 'assets/images/gallery/656be422050811.75348756.jpeg'),
+(12, '656be42dafffa4.96859758', 'assets/images/gallery/656be42dafffa4.96859758.jpeg'),
+(13, '656be4416eb4b1.10917097', 'assets/images/gallery/656be4416eb4b1.10917097.jpeg'),
+(14, '656be4548ad8e5.94800591', 'assets/images/gallery/656be4548ad8e5.94800591.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `blog`
+--
+
+CREATE TABLE `blog` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `img_blog` varchar(100) NOT NULL,
+  `path_blog` varchar(100) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `informacoes` varchar(100) NOT NULL,
+  `p1` varchar(300) NOT NULL,
+  `p2` varchar(300) DEFAULT NULL,
+  `p3` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Despejando dados para a tabela `blog`
+--
+
+INSERT INTO `blog` (`id`, `img_blog`, `path_blog`, `titulo`, `informacoes`, `p1`, `p2`, `p3`) VALUES
+(4, '656cf1713581c8.91270283', 'assets/images/blog/656cf1713581c8.91270283.jpeg', '9 EstagiÃ¡rios VS 1 PC', 'EstagiÃ¡rios 2023.2 | 09/08/2023 | Faculdade Luciano FeijÃ£o', 'No dia nove de Agosto de 2023, os estagiÃ¡rios da Faculdade Luciano FeijÃ£o, com bastante luta conseguiram montar e ligar um computador.', 'Nove estagiÃ¡rios entusiasmados decidem montar um computador do zero, na Faculdade Luciano FeijÃ£o, que enfrentam desafios como peÃ§as defeituosas. O computador montado nÃ£o apenas funciona perfeitamente, mas tambÃ©m fortalece os laÃ§os entre os estagiÃ¡rios e inspira outros estudantes na regiÃ£o.', '');
 
 -- --------------------------------------------------------
 
@@ -69,6 +117,18 @@ INSERT INTO `login` (`id`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices de tabela `arquivo`
+--
+ALTER TABLE `arquivo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `contact`
 --
 ALTER TABLE `contact`
@@ -85,10 +145,22 @@ ALTER TABLE `login`
 --
 
 --
+-- AUTO_INCREMENT de tabela `arquivo`
+--
+ALTER TABLE `arquivo`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de tabela `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de tabela `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `login`

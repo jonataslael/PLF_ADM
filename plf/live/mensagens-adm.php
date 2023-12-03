@@ -128,12 +128,10 @@ include("php/banco.php");
         </div>
       </nav>
       <div class="main">
-        <section class="module bg-dark-30 about-page-header" data-background="assets/images/about_bg.jpg">
+        <section class="home-full-height home-section home-fade bg-dark-30 about-page-header" data-background="assets/images/mensagens.png">
           <div class="container">
             <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h1 class="module-title font-alt mb-0">Texto</h1>
-              </div>
+              
             </div>
           </div>
         </section>

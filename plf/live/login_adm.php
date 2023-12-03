@@ -79,14 +79,11 @@
               <div class="box-formulario" style="margin: 60px;">        
         
                 <div class="formulario">
-
-                
-
                     <div class="title-form">
                       <h1><i class="icon icon-comments-o"></i>Login</h1>
                     </div>
         
-                    <form action="../live/php/login.php" method="post">
+                    <form class="" action="php/login.php" method="post">
         
                         <span>
                             <input type="text" class="input-slide" id="email" name="email" placeholder="E-mail" autocomplete="off" required=""/>

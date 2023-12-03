@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<?php
+
+  include('php/banco.php');
+
+?>
+
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -66,11 +73,10 @@
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
               
-              <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
-              <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
-              <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
-              <li><a href="mensagens-adm.php"><i class="fa fa-fw">&#xF003;</i> Mensagens</a></li>
-              <li><a href="sobre-adm.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
+              <li><a href="index.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
+              <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
+              <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
               <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
@@ -136,36 +142,49 @@
       <div class="main">
         <section class="module-small">
           <div class="container">
-          
             <div class="row">
               <div class="col-sm-8">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Blog Featured Image"/></div>
-                  <div class="post-header font-alt">
-                    <h1 class="post-title">9 estagiários VS 1 computador</h1>
-                    <div class="post-meta">By Nadson Nascimento | 09 de Agosto | 3 Comments | Fotografia, Estágio.
+
+              <?php
+
+                $sql = "select * from blog order by id desc"; 
+
+                //executa o comando sql
+                  $consulta = $conexao->query($sql);
+                  
+                  //testar se deu certo o comando
+                  if($consulta){
+                      //verificando se existe o usuario
+                      if($consulta->num_rows > 0){
+                      //convertendo a consulta num array
+                      while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+                echo 
+                  '<div class="post">
+                    <div class="post-thumbnail"><img src="'.$linha['path_blog'].'" alt="Blog Featured Image"/></div>
+                      <div class="post-header font-alt">
+                        <h1 class="post-title">'.$linha['titulo'].'</h1>
+                        <div class="post-meta">'.$linha['informacoes'].'</div>
+                      </div>
+                    <div class="post-entry">
+                      <p>'.$linha['p1'].'</p>
+                      <p>'.$linha['p2'].'</p>
+                      <p>'.$linha['p3'].'</p>
                     </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>No dia nove de Agosto de 2023, os estagiários da Faculdade Luciano Feijão, com bastante luta conseguiram montar e ligar um computador.</p>
-                    <p>Nove estagiários entusiasmados decidem montar um computador do zero, na Faculdade Luciano Feijão, que enfrentam desafios como peças defeituosas. O computador montado não apenas funciona perfeitamente, mas também fortalece os laços entre os estagiários e inspira outros estudantes na região.</p>
-                  </div>
-                </div>
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colação-wallpaper.png" alt="Blog Featured Image"/></div>
-                  <div class="post-header font-alt">
-                    <h1 class="post-title">Colação de Grau Direito 2023.2</h1>
-                    <div class="post-meta">By Nadson Nascimento | 23 Novembro | 3 Comments | Fotografia, Colação de Grau Cursos.
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>No dia 23 de Outubro, os alunos dos cursos de Administração, Direito, Engenharia Civil e Psicologia formaram-se e subiram o degrau mais alto da jornada da graduação a Colação de Grau.</p>
-                    <p>Colar grau é a realização do sonho dos nossos brilhantes acadêmicos que agora ingressam no mercado de trabalho como profissionais dentro das suas áreas. A conquista do diploma é o primeiro passo para essa nova fase de sucesso da vida de cada um.</p>
-                  </div>
-                </div>
+                  </div>';
+                    }
+                    }
+                  };
+                ?>
                 
               </div>
+
               <div class="col-sm-12 col-md-3 col-md-offset-1 sidebar">
+
+                <div class="widget">
+                  <a href="add_post.php" class="btn btn-round btn-d" type="submit" style="width:100%;"><i class="fa fa-fw">&#xF055;</i> Criar Novo Post</a>
+                </div>
+
                 <div class="widget">
                   <form role="form">
                     <div class="search-box">

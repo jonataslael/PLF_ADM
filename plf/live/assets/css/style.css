@@ -799,6 +799,9 @@ a,
 /*--------------------------------------------------------------
 	Forms
 --------------------------------------------------------------*/
+
+
+
 /* Selection */
 ::-moz-selection {
   background: #000;
@@ -818,7 +821,6 @@ a,
 /* Forms common style */
 .form-control {
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 12px;
   height: 30px;
@@ -900,7 +902,6 @@ blockquote {
 
 .font-alt {
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
 }
 
@@ -1114,7 +1115,6 @@ blockquote {
   padding: 7px 10px;
   font-size: 30px;
   font-weight: 700;
-  text-transform: uppercase;
   border-right: 1px #0C65CF solid;
   background: transparent;
   color: #d2d2d2;
@@ -1201,7 +1201,7 @@ blockquote {
 .textarea-slide::-webkit-input-placeholder {
 
   color: #4c4e4e;
-  font-weight: 300;
+  font-weight: 100;
 
 }
 
@@ -1216,7 +1216,6 @@ blockquote {
   padding: 7px 12px;
   font-size: 33px;
   font-weight: 700;
-  text-transform: uppercase;
   border-right: 1px #0C65CF;
   background: transparent;
   color: #d2d2d2;
@@ -1230,7 +1229,7 @@ blockquote {
 
 .textarea-slide + label:after {
 
-  content: "";
+
   position: absolute;
   top: 0;
   right: 100%;
@@ -1583,7 +1582,6 @@ General Styles - Owlcarousel
   border-radius: 0;
   z-index: 1000;
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 11px;
   transition: background, padding 0.4s ease-in-out 0s;
@@ -1684,7 +1682,6 @@ General Styles - Owlcarousel
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
-	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-size: 11px;
 }
@@ -1896,7 +1893,6 @@ Google map
 
 .features-title,
 .alt-features-title {
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 400;
   font-size: 14px;
@@ -2569,7 +2565,6 @@ Google map
 .pagination a {
   border: 1px solid #eaeaea;
   display: inline-block;
-  text-transform: uppercase;
   text-align: center;
   color: #999;
   padding: 4px 12px;

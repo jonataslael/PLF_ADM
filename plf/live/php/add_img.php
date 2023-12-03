@@ -1,41 +1,34 @@
 <?php
 
-  include("php/banco.php");
+include("php/banco.php");
 
-  function enviarArq($error, $name, $tmp_name) {
+$foto = $_FILES['arquivo']['tmp_name'];
+
+$pasta = 'assets/images/gallery/';
+
+if (!empty($foto)){
+    $file = getimagesize($foto);
     
-    include("php/banco.php");
+    //TESTA A EXTENSÃO DO ARQUIVO
+    if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+        echo "erro - extensão não permitida";
+        exit();
+    }
 
-      $pasta = "C:/xampp/htdocs/plf/live/assets/images/";
-      $nome = $name;
-      $new_name = uniqid();
-      $extensao = strtolower(pathinfo($nome,PATHINFO_EXTENSION));
+    //CAPTURA A EXTENSÃO DO ARQUIVO
+    $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
 
-      if($extensao != "jpg" && $extensao != "png") echo 'tipo n aceito';
+    //MONTA O CAMINHO DO NOVO DESTINO
+    $new_name = uniqid('', true);
+    $path = "{$pasta}". $new_name . '.' . $extensao;  
+    move_uploaded_file ($foto , $path );
 
-      $path = $arquivo["tmp_name"] ; $pasta . $new_name . "." . $extensao;
+    $sql = "insert into arquivo (id, nome, local) VALUES('null', '$new_name', '$path')";
+    $add = $conexao->query($sql);
 
-      $deu_crt = move_uploaded_file($tmp_name, $pasta . $new_name . "." . $extensao );
+} 
 
-      if($deu_crt) {
-        $mysqli->query("INSERT INTO arquivos (id, nome, local) VALUES(null, '$new_name', '$path')");
-
-        return true; } else return false;
-
-  };
-
-    if(isset($_FILES['arquivos'])) {
-      $arquivo = $_FILES['arquivos'];
-
-      $tudo_crt = true;
-
-      foreach($arquivos['name'] as $index-> $arq)
-
-      $deu_crt = enviarArq($arquivos['error'][$index], $arquivos['name'][$index], $arquivos['tmp_name'][$index]);
-
-      if(!$deu_crt) $tudo_crt = false;
-
-    };
+   
 
     if(isset($_GET['deletar'])) {
 
@@ -48,19 +41,5 @@
       }
   
     };
-
-    try {
-
-      if($_SESSION['login'] != "ok" ) {
-        echo 'você não está logado';
-      }; 
-      $sql = "SELECT * FROM arquivos";
-    
-      $sql_query = $conexao->query($sql);
-    
-    } catch (\Throwable $th) {
-      echo $th;
-      $loading =false;
-    }
     
   ?>

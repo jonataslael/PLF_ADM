@@ -53,7 +53,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
   </head>
-  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="10">
     <main>
       <div class="page-loader">
         <div class="loader">Loading...</div>
@@ -66,10 +66,11 @@
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
               
-              <li><a href="index.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
-              <li><a href="colecoes.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
-              <li><a href="blog.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
-              <li><a href="sobre.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
+              <li><a href="dashboard.php"><i class="fa fa-fw">&#xF015;</i> Principal</a></li>
+              <li><a href="colecoes-adm.php"><i class="fa fa-fw">&#xF02D;</i> Coleções</a></li>
+              <li><a href="blog-adm.php"><span class="icon-browser" aria-hidden="true"></span> Blog</a></li>
+              <li><a href="mensagens-adm.php"><i class="fa fa-fw">&#xF003;</i> Mensagens</a></li>
+              <li><a href="sobre-adm.php"><i class="fa fa-fw">&#xF059;</i> Sobre</a></li>
               
               <!--li.dropdown.navbar-cart-->
               <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
@@ -123,7 +124,7 @@
         </div>
       </nav>
       <div class="main">
-      <section class="home-section home-fade home-full-height bg-dark-60 agency-page-header" id="home" data-background="assets/images/agency/principal.png">
+      <section class="home-section home-fade home-full-height bg-dark-60 agency-page-header" id="home" data-background="assets/images/eventos.png">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -133,113 +134,75 @@
           </div>
         </section>
       <div class="main">
-        <section class="module home-section home-fade bg-dark-60" data-background="assets/images/">
+        <section class="module-small">
           <div class="container">
+          
             <div class="row">
-              <div class="module-title font-alt mb-0" style="margin: 250px;">
-                  <h2>Estagiários 2023</h2>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="module">
-          <div class="container">
-            <div class="row multi-columns-row">
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-1.jpg" title="Title 1"><img src="assets/images/colecao/cgrau/cgrau-1.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                  </div></a></div>
+              <div class="col-sm-8">
+                <div class="post">
+
+                <form method="POST" enctype="multipart/form-data">
+
+                  <div class="post-thumbnail">
+                    <label for="arquivo" id="Label">
+                    <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
+                    </label>          
+                    <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;">      
+                  </div>
+                  <div class="post-header font-alt">
+                    <input class="form-control mt-10 mb-20" rows="1" id="title" name="title" placeholder="Nome do Evento">
+                    <input class="form-control" rows="1" id="anft" name="anft" placeholder="Anfitrião | Data | Tema, Sobre">
+                  
+                  </div>
+                  <div class="post-entry">
+                    <textarea class="form-control" rows="2" id="p1" name="p1" placeholder="Parágrafo 1"></textarea><br>
+                    <textarea class="form-control" rows="2" id="p2" name="p2" placeholder="Parágrafo 2"></textarea><br>
+                    <textarea class="form-control" rows="2" id="p3" name="p3" placeholder="Parágrafo 3"></textarea>
+                  </div>
+
+                  <label for="enviar" class="btn btn-d btn-round" style="margin-top:10px;"><i class="fa fa-fw">&#xF0C7;</i> Salvar Post</label>
+                  <input type="submit" id="enviar" name="enviar" style="display:none;">
+
                 </div>
+
+                
+                
+                </form>
+
               </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-2.jpg" title="Title 2"><img src="assets/images/colecao/cgrau/cgrau-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+              <div class="col-sm-12 col-md-3 col-md-offset-1 sidebar">
+                <div class="widget">
+                  <form role="form">
+                    <div class="search-box">
+                      <input class="form-control" type="text" placeholder="Search..."/>
+                      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                  </form>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-3.jpg" title="Title 3"><img src="assets/images/colecao/cgrau/cgrau-3.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+                
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Publicações Recentes</h5>
+                  <ul class="widget-posts">
+                    <li class="clearfix">
+                      <div class="widget-posts-image"><a href="tags-ex.php"><img src="assets/images/Colação de grau.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="tags-ex.php">Colação de Grau Cursos</a></div>
+                      </div>
+                    </li>
+                    <li class="clearfix">
+                      <div class="widget-posts-image"><a href="tags-ex2.php"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="tags-ex2.php">Estagiários vs PC</a></div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-4.jpg" title="Title 7"><img src="assets/images/colecao/cgrau/cgrau-4.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Tag</h5>
+                  <div class="tags font-serif"><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-1.jpg" title="Title 1"><img src="assets/images/colecao/cgrau/cgrau-1.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                  </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-2.jpg" title="Title 2"><img src="assets/images/colecao/cgrau/cgrau-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-3.jpg" title="Title 3"><img src="assets/images/colecao/cgrau/cgrau-3.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-4.jpg" title="Title 7"><img src="assets/images/colecao/cgrau/cgrau-4.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-1.jpg" title="Title 1"><img src="assets/images/colecao/cgrau/cgrau-1.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                  </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-2.jpg" title="Title 2"><img src="assets/images/colecao/cgrau/cgrau-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-3.jpg" title="Title 3"><img src="assets/images/colecao/cgrau/cgrau-3.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/colecao/cgrau/cgrau-4.jpg" title="Title 7"><img src="assets/images/colecao/cgrau/cgrau-4.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                      </div></a></div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -263,7 +226,7 @@
 
               <div class="col-sm-6">
                 <div class="widget">
-                  <h5 class="widget-title font-alt">Fale Conosco</h5>
+                  <h5 class="widget-title">Fale Conosco</h5>
                   <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
@@ -281,7 +244,7 @@
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
+                      <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
@@ -350,5 +313,59 @@
     <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.getElementById("Label").addEventListener("click", function() {
+            document.getElementById("arquivo").click();
+        });
+
+        document.getElementById("arquivo").addEventListener("change", function() {
+            uploadFile();
+        });
+
+        function uploadFile() {
+          <?php
+
+          include("php/banco.php");
+
+          $foto = $_FILES['arquivo']['tmp_name'];
+
+          $pasta = 'assets/images/blog/';
+
+          if (!empty($foto)){
+              $file = getimagesize($foto);
+              
+              //TESTA A EXTENSÃO DO ARQUIVO
+              if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+                  echo "erro - extensão não permitida";
+                  exit();
+              }
+
+              //CAPTURA A EXTENSÃO DO ARQUIVO
+              $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+              //MONTA O CAMINHO DO NOVO DESTINO
+              $new_name = uniqid('', true);
+              $path = "{$pasta}". $new_name . '.' . $extensao;  
+              move_uploaded_file ($foto , $path );
+
+              $title = $_POST['title'];
+              $anft = $_POST['anft'];
+              $p1 = $_POST['p1'];
+              $p2 = $_POST['p2'];
+              $p3 = $_POST['p3'];
+
+              $sql = "insert into blog (id, img_blog, path_blog, titulo, informacoes, p1, p2, p3) VALUES('null', '$new_name', '$path', '$title', '$anft', '$p1', '$p2', '$p3')";
+              $add = $conexao->query($sql);
+
+          } 
+
+          ?>
+        }
+    </script>
+
+    
+
+
   </body>
 </html>
