@@ -225,7 +225,7 @@
 
               <div class="col-sm-6">
                 <div class="widget">
-                  <h5 class="widget-title">Fale Conosco</h5>
+                  <h5 class="widget-title font-alt">Fale Conosco</h5>
                   <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
@@ -244,10 +244,10 @@
                     </div>
                     <div class="form-group">
                       <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
-                      <p class=" text-danger"></p>
+                      <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
-                      <button class="btn btn-block btn-round btn-d" type="submit" name="enviar">Enviar</button>
+                      <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
                     </div>
                   </form>
                 </div>

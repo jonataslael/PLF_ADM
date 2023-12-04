@@ -136,31 +136,26 @@
       <div class="main">
         <section class="module">
           <div class="container">
-
-          <div class="row multi-columns-row" style="margin-bottom:30px;">
-              
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                
-              <button class="btn btn-warning" type="button"><i class="fa fa-fw">&#xF044;</i> Editar</button>
-              <button class="btn btn-d btn-round" type="submit"><i class="fa fa-fw">&#xF055;</i> Criar Nova Colação</button>
-            
-              </div>
-           </div>
-
             <div class="row multi-columns-row post-columns">
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/cgrau/cgrau-7.jpg" alt="Blog-post Thumbnail"/></div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <div class="post">
+                <div class="post-thumbnail"><label for="arquivo" id="Label">
+                                              <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
+                                            </label>          
+                                            <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;">
+                </div>
                   <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-cgrau.php">Colação de Grau</a></h2>
-                    <div class="post-meta">Cursos - 2023.2
-                    </div>
+                    <input class="form-control post-title" rows="1" id="ncol" name="ncol" placeholder="Nome da Coleção">
+                    <input class="form-control post-meta input-xs" rows="1" id="tema" name="tema" placeholder="Tema" style="margin-top:7.5px;">
                   </div>
                   <div class="post-entry">
-                    <p>Colação de Grau da turma de Direito 2018.1 realizada na Faculdade Luciano Feijão no dia 17 de Novembro de 2023</p>
-                  </div>
+                    <input class="form-control" type="text" rows="1" id="desc" name="desc" placeholder="Breve Descrição">
+                    <label for="enviar" class="btn btn-d btn-round" style="margin-top:10px; width:100%;"><i class="fa fa-fw">&#xF055;</i> Criar Coleção</label>
+                    <input type="submit" id="enviar" name="enviar" style="display:none;">
                 </div>
               </div>
+            </div>
+
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post">
                   <div class="post-thumbnail"><img src="assets/images/colecao/cgrau/cgrau-7.jpg" alt="Blog-post Thumbnail"/></div>
@@ -336,5 +331,53 @@
     <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.getElementById("Label").addEventListener("click", function() {
+            document.getElementById("arquivo").click();
+        });
+
+        document.getElementById("arquivo").addEventListener("change", function() {
+            uploadFile();
+        });
+
+        function uploadFile() {
+          <?php
+
+          include("php/banco.php");
+
+          $foto = $_FILES['arquivo']['tmp_name'];
+
+          $pasta = 'assets/images/blog/';
+
+          if (!empty($foto)){
+              $file = getimagesize($foto);
+              
+              //TESTA A EXTENSÃO DO ARQUIVO
+              if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+                  echo "erro - extensão não permitida";
+                  exit();
+              }
+
+              //CAPTURA A EXTENSÃO DO ARQUIVO
+              $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+              //MONTA O CAMINHO DO NOVO DESTINO
+              $new_name = uniqid('', true);
+              $path = "{$pasta}". $new_name . '.' . $extensao;  
+              move_uploaded_file ($foto , $path );
+
+              $title = $_POST['ncol'];
+              $tema = $_POST['tema'];
+              $desc = $_POST['desc'];
+
+              $sql = "insert into colecao (id, img_col, path_col, pasta, titulo, tema, desc) VALUES('null', '$new_name','$pasta', '$path', '$title', '$tema', '$desc')";
+              $add = $conexao->query($sql);
+
+          } 
+          
+          ?>
+        }
+    </script>
   </body>
 </html>

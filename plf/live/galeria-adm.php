@@ -1,48 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-
-  include("php/banco.php");
-
-  $foto = $_FILES['arquivo']['tmp_name'];
-
-  $pasta = 'assets/images/gallery/';
-
-  if (!empty($foto)){
-      $file = getimagesize($foto);
-      
-      //TESTA A EXTENSÃO DO ARQUIVO
-      if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
-          echo "erro - extensão não permitida";
-          exit();
-      }
-
-      //CAPTURA A EXTENSÃO DO ARQUIVO
-      $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
-
-      //MONTA O CAMINHO DO NOVO DESTINO
-      $new_name = uniqid('', true);
-      $path = "{$pasta}". $new_name . '.' . $extensao;  
-      move_uploaded_file ($foto , $path );
-
-      $sql = "insert into arquivo (id, nome, local) VALUES('null', '$new_name', '$path')";
-      $add = $conexao->query($sql);
-
-} 
-
-    // if(isset($_GET['deletar'])) {
-
-    //   $id = intval($_GET['deletar']);
-    //   $sql_query = $mysqli-> {"SELECT * FROM arquivos WHERE id = '$id'"};
-    //   $arquivo = $sql_query->fetch_assoc();
-  
-    //   if(unlink($arquivo['path'])) {
-    //     $deu_crt = $mysqli->{"DELETE FROM arquivos WHERE id = '$id'"};
-    //   }
-  
-    // };
-    
-  ?>
+  include('php/banco.php');
+?>
 
 <html lang="en-US" dir="ltr">
   <head>
@@ -181,17 +141,22 @@
         <section class="module">
           <div class="container">
 
-          <div class="col-sm-12 col-md-12 col-lg-12">
-
-                  <form class="" method="POST" enctype="multipart/form-data">
-                  
-                  <label for="arquivo"><i class="fa fa-fw">&#xF055;</i> Adicionar Foto </label>
-                  <input multiple type="file" name="arquivo" id="arquivo" accept="image/*">
-
-                  <input class="btn btn-d btn-round" type="submit" id="enviarArq" name="enviarArq">
-
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="gallery-item">
+                
+                    <form class="" method="POST" enctype="multipart/form-data">
+                          
+                    <label for="arquivo" id="Label">
+                    <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
+                    </label>          
+                    <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;"> 
+                
+                    <label for="enviarArq" class="btn btn-d btn-round" style="width:100%; margin-top:10px;"><i class="fa fa-fw">&#xF0C7;</i> Salvar Foto</label>
+                    <input  type="submit" id="enviarArq" name="enviarArq" style="display:none;">
+                
                   </form>
-
+                
+            </div>
           </div>
 
                   <?php
@@ -329,5 +294,83 @@
     <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <?php
+
+      include("php/banco.php");
+
+      
+
+      if (!empty($foto)){
+
+          $foto = $_FILES['arquivo']['tmp_name'];
+
+          $pasta = 'assets/images/gallery/';
+          
+          $file = getimagesize($foto);
+          
+          //TESTA A EXTENSÃO DO ARQUIVO
+          if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+              echo "erro - extensão não permitida";
+              exit();
+          }
+
+          //CAPTURA A EXTENSÃO DO ARQUIVO
+          $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+          //MONTA O CAMINHO DO NOVO DESTINO
+          $new_name = uniqid('', true);
+          $path = "{$pasta}". $new_name . '.' . $extensao;  
+          move_uploaded_file ($foto , $path );
+
+          $sql = "insert into arquivo (id, nome, local) VALUES('null', '$new_name', '$path')";
+          $add = $conexao->query($sql);
+
+    } 
+  ?>
+
+    <script>
+        document.getElementById("Label").addEventListener("click", function() {
+            document.getElementById("arquivo").click();
+        });
+
+        document.getElementById("arquivo").addEventListener("change", function() {
+            uploadFile();
+        });
+
+        function uploadFile() {
+          <?php
+
+          include("php/banco.php");
+
+          $foto = $_FILES['arquivo']['tmp_name'];
+
+          $pasta = 'assets/images/gallery/';
+
+          if (!empty($foto)){
+              $file = getimagesize($foto);
+              
+              //TESTA A EXTENSÃO DO ARQUIVO
+              if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+                  echo "erro - extensão não permitida";
+                  exit();
+              }
+
+              //CAPTURA A EXTENSÃO DO ARQUIVO
+              $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+              //MONTA O CAMINHO DO NOVO DESTINO
+              $new_name = uniqid('', true);
+              $path = "{$pasta}". $new_name . '.' . $extensao;  
+              move_uploaded_file ($foto , $path );
+
+              $sql = "insert into arquivo (id, nome, local) VALUES('null', '$new_name', '$path')";
+              $add = $conexao->query($sql);
+
+          } 
+
+          ?>
+        }
+    </script>
   </body>
 </html>

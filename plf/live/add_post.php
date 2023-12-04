@@ -142,7 +142,6 @@
                 <div class="post">
 
                 <form method="POST" enctype="multipart/form-data">
-
                   <div class="post-thumbnail">
                     <label for="arquivo" id="Label">
                     <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
@@ -152,7 +151,6 @@
                   <div class="post-header font-alt">
                     <input class="form-control mt-10 mb-20" rows="1" id="title" name="title" placeholder="Nome do Evento">
                     <input class="form-control" rows="1" id="anft" name="anft" placeholder="Anfitrião | Data | Tema, Sobre">
-                  
                   </div>
                   <div class="post-entry">
                     <textarea class="form-control" rows="2" id="p1" name="p1" placeholder="Parágrafo 1"></textarea><br>
@@ -164,9 +162,6 @@
                   <input type="submit" id="enviar" name="enviar" style="display:none;">
 
                 </div>
-
-                
-                
                 </form>
 
               </div>
@@ -226,7 +221,7 @@
 
               <div class="col-sm-6">
                 <div class="widget">
-                  <h5 class="widget-title">Fale Conosco</h5>
+                  <h5 class="widget-title font-alt">Fale Conosco</h5>
                   <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
@@ -359,13 +354,10 @@
               $add = $conexao->query($sql);
 
           } 
-
+          
           ?>
         }
     </script>
-
-    
-
 
   </body>
 </html>

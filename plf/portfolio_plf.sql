@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/12/2023 às 22:25
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 04/12/2023 às 20:29
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,9 @@ INSERT INTO `arquivo` (`id`, `nome`, `local`) VALUES
 (11, '656be422050811.75348756', 'assets/images/gallery/656be422050811.75348756.jpeg'),
 (12, '656be42dafffa4.96859758', 'assets/images/gallery/656be42dafffa4.96859758.jpeg'),
 (13, '656be4416eb4b1.10917097', 'assets/images/gallery/656be4416eb4b1.10917097.jpeg'),
-(14, '656be4548ad8e5.94800591', 'assets/images/gallery/656be4548ad8e5.94800591.jpeg');
+(14, '656be4548ad8e5.94800591', 'assets/images/gallery/656be4548ad8e5.94800591.jpeg'),
+(17, '656e0d4ea77392.14109649', 'assets/images/gallery/656e0d4ea77392.14109649.jpeg'),
+(19, '656e2407051802.26382584', 'assets/images/gallery/656e2407051802.26382584.jpeg');
 
 -- --------------------------------------------------------
 
@@ -68,6 +70,22 @@ CREATE TABLE `blog` (
 
 INSERT INTO `blog` (`id`, `img_blog`, `path_blog`, `titulo`, `informacoes`, `p1`, `p2`, `p3`) VALUES
 (4, '656cf1713581c8.91270283', 'assets/images/blog/656cf1713581c8.91270283.jpeg', '9 EstagiÃ¡rios VS 1 PC', 'EstagiÃ¡rios 2023.2 | 09/08/2023 | Faculdade Luciano FeijÃ£o', 'No dia nove de Agosto de 2023, os estagiÃ¡rios da Faculdade Luciano FeijÃ£o, com bastante luta conseguiram montar e ligar um computador.', 'Nove estagiÃ¡rios entusiasmados decidem montar um computador do zero, na Faculdade Luciano FeijÃ£o, que enfrentam desafios como peÃ§as defeituosas. O computador montado nÃ£o apenas funciona perfeitamente, mas tambÃ©m fortalece os laÃ§os entre os estagiÃ¡rios e inspira outros estudantes na regiÃ£o.', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `colecao`
+--
+
+CREATE TABLE `colecao` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `img_col` varchar(100) NOT NULL,
+  `path_col` varchar(100) NOT NULL,
+  `pasta` varchar(100) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `tema` varchar(100) NOT NULL,
+  `desc` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -129,6 +147,12 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `colecao`
+--
+ALTER TABLE `colecao`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `contact`
 --
 ALTER TABLE `contact`
@@ -148,19 +172,25 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de tabela `arquivo`
 --
 ALTER TABLE `arquivo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de tabela `colecao`
+--
+ALTER TABLE `colecao`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `login`

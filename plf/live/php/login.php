@@ -14,14 +14,13 @@
       $_SESSION['login'] = 'ok';
       $linha = $consulta -> fetch_array(MYSQLI_ASSOC);
       
-      //Testa o cargo para ver se é um gerente, educador físico ou aluno
       if($linha['id'] == '1'){
           header('Location: ../dashboard.php');
       }
 
     }
     else {
-      header('Location: ../login_adm.php?login=erro'); 
+      header('Location: ../login_adm.php?login=erro');
     }
   }
       

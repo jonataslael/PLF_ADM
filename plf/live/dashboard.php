@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+  include('php/banco.php');
+?>
+
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -136,7 +141,7 @@
       <div class="main">
         <section class="module pt-0 pb-0" id="about">
           <div class="row position-relative m-0">
-            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/principal-imgs/principal-1.jpg"><button class="btn btn-w btn-xs" type="button" style="margin-top:10px; float:right;"><i class="fa fa-fw">&#xF044;</i></button></div>
+            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/principal-imgs/principal-1.jpg"></div>
             <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
               <div class="row">
                 <div class="col-sm-12">
@@ -149,86 +154,34 @@
         </section>
         <section class="module">
           <div class="container">
-            <div class="row multi-columns-row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Nossos Trabalhos</h2>
-                
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 1"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 1"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 2"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 2"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-2.jpg" title="Title 3"><img src="assets/images/principal-imgs/principal-2.jpg" alt="Gallery Image 3"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+          <?php
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 7"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 7"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 8"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 8"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-3.jpg" title="Title 9"><img src="assets/images/principal-imgs/principal-3.jpg" alt="Gallery Image 9"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
+          $sql = "select * from arquivo order by rand(), id asc limit 9"; 
 
-              <div class="col-sm-6 col-md-4 col-lg-4">
+          //executa o comando sql
+            $consulta = $conexao->query($sql);
+            
+            //testar se deu certo o comando
+            if($consulta){
+                //verificando se existe o usuario
+                if($consulta->num_rows > 0){
+                //convertendo a consulta num array
+                while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+          echo 
+            '<div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 4"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 4"/>
+                    <div class="gallery-image"><a class="gallery" href="'.$linha['local'].'" title="Title 2"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
                       <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
+                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                    </div></a></div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 5"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 5"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                  <div class="gallery-image"><a class="gallery" href="assets/images/principal-imgs/principal-4.jpg" title="Title 6"><img src="assets/images/principal-imgs/principal-4.jpg" alt="Gallery Image 6"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-edit"></span></div>
-                      </div></a></div>
-                </div>
-              </div>
-            </div>
+              </div>';
+              }
+              }
+            };
+          ?>
+
           </div>
         </section>
         <section class="module-small bg-dark">
@@ -269,10 +222,10 @@
               <div class="col-sm-6">
                 <div class="widget">
                   <h5 class="widget-title font-alt">Fale Conosco</h5>
-                  <form id="contactForm" role="form" method="post" action="php/contact.php">
+                  <form id="contactForm" role="form" method="post" action="php/insert-contact.php">
                     <div class="form-group">
                       <label class="sr-only" for="name">Nome</label>
-                      <input class="form-control" type="text" id="name" name="name" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
+                      <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" data-validation-required-message="Please enter your name."/>
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
@@ -286,14 +239,13 @@
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
+                      <textarea class="form-control" rows="5" id="assunto" name="assunto" placeholder="Esceva sua mensagem aqui" required="required" data-validation-required-message="Please enter your message."></textarea>
                       <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
                       <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Enviar</button>
                     </div>
                   </form>
-                  
                 </div>
               </div>
 

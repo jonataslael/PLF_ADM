@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+
+<?php 
+
+  include('php/banco.php');
+
+?>
+    
+
+
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -58,7 +67,6 @@
       <div class="page-loader">
         <div class="loader">Loading...</div>
       </div>
-      
       <div class="main">
         <section class="module login-page-header" data-background="assets/images/login.png">
           <div class="container">
@@ -66,52 +74,35 @@
             </div>
           </div>
         </section>
-
         <section class="boxLogin container">
-
-        
-
           <div class="content">
-
             <div class="col-3"></div>
-                
             <div class="col-6">
-              <div class="box-formulario" style="margin: 60px;">        
-        
+              <div class="box-formulario" style="margin: 60px;">
                 <div class="formulario">
                     <div class="title-form">
                       <h1><i class="icon icon-comments-o"></i>Login</h1>
                     </div>
-        
                     <form class="" action="php/login.php" method="post">
-        
                         <span>
                             <input type="text" class="input-slide" id="email" name="email" placeholder="E-mail" autocomplete="off" required=""/>
                             <label for="email"> <i class="fa fa-fw">&#xF0E0;</i> </label>
                         </span>
-        
                         <span>
                             <input type="password" class="input-slide" id="senha" name="senha" placeholder="Senha" autocomplete="off" required=""/>
                             <label for="senha"> <i class="fa fa-fw">&#xF084;</i> </label>
                         </span>
-        
                         <div class="box-btn">
-                             
                             <button type="submit" id="entrar" name="entar" class="btn-envia zoom-shadow">
                               Entar <i class="fa fa-fw">&#xF090;</i> 
                             </button>
-        
                         </div>
-        
                     </form>
-        
                 </div>
           </div>
               <div class="col-3"></div>
-
            </div>
            </section><!--Login-->
-
       </div>
       <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
     </main>
