@@ -140,53 +140,47 @@
       <div class="main">
         <section class="module">
           <div class="container">
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="gallery-item">
-                
-                    <form class="" method="POST" enctype="multipart/form-data">
-                          
-                    <label for="arquivo" id="Label">
-                    <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
-                    </label>          
-                    <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;"> 
-                
-                    <label for="enviarArq" class="btn btn-d btn-round" style="width:100%; margin-top:10px;"><i class="fa fa-fw">&#xF0C7;</i> Salvar Foto</label>
-                    <input  type="submit" id="enviarArq" name="enviarArq" style="display:none;">
-                
-                  </form>
-                
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              
+              <form class="" id="uploadForm" method="POST" enctype="multipart/form-data">   
+                <label for="arquivo" id="Label">
+                  <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
+                </label>          
+                <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;" onchange="submitForm()"> 
+              </form>
+              
             </div>
+
+            <?php 
+
+              $sql = "select * from arquivo order by id desc"; 
+
+              //executa o comando sql
+              $consulta = $conexao->query($sql);
+              
+              //testar se deu certo o comando
+              if($consulta){
+                  //verificando se existe o usuario
+                  if($consulta->num_rows > 0){
+                  //convertendo a consulta num array
+                    while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+            
+                      echo '<div class="col-sm-6 col-md-4 col-lg-3">
+                              <div class="gallery-item">
+                                <div class="gallery-image">
+                                  <a class="gallery" href="'.$linha['local'].'" title="Title 1"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
+                                    <div class="gallery-caption">
+                                      <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>';
+                    }
+                  }
+              };
+            ?>
           </div>
-
-                  <?php
-
-                  $sql = "select * from arquivo order by id desc"; 
-
-                  //executa o comando sql
-                    $consulta = $conexao->query($sql);
-                    
-                    //testar se deu certo o comando
-                    if($consulta){
-                        //verificando se existe o usuario
-                        if($consulta->num_rows > 0){
-                        //convertendo a consulta num array
-                        while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
-
-                  echo 
-                     '<div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="gallery-item">
-                            <div class="gallery-image"><a class="gallery" href="'.$linha['local'].'" title="Title 2"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
-                              <div class="gallery-caption">
-                                <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                            </div></a></div>
-                        </div>
-                      </div>';
-                      }
-                      }
-                    };
-                  ?>
-
         </section>
         <div class="module-small bg-dark2">
           <div class="container">
@@ -295,11 +289,15 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
 
+    <script>
+      function submitForm() {
+        document.getElementById("uploadForm").submit();
+      }
+    </script>
+
     <?php
 
       include("php/banco.php");
-
-      
 
       if (!empty($foto)){
 
@@ -371,6 +369,7 @@
 
           ?>
         }
+
     </script>
   </body>
 </html>
