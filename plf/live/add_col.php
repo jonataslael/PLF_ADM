@@ -141,91 +141,63 @@
       <div class="main">
         <section class="module">
           <div class="container">
-
-            <div class="widget row">
-              <a href="add_col.php" class="btn btn-round btn-d" type="submit" style="margin-bottom:20px; float:left; margin-left:15px;"><i class="fa fa-fw">&#xF055;</i> Criar Nova Coleção</a>
-            </div>
             
             <div class="row multi-columns-row post-columns">
 
-            <?php 
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="col-sm-6 col-md-6 col-lg-5">
+                    <div class="post">
 
-                $sql = "select * from arquivo order by id"; 
-
-                //executa o comando sql
-                $consulta = $conexao->query($sql);
-
-                //testar se deu certo o comando
-                if($consulta){
-                    //verificando se existe o usuario
-                    if($consulta->num_rows > 0){
-                    //convertendo a consulta num array
-                      while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
-
-                        echo '<div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="post">
-
-                                  <div class="post-thumbnail"><img src="assets/images/gallery/656f73a4f1ff63.38209867.jpeg" alt="Blog-post Thumbnail"/></div>
-
-                                    <div class="post-header font-alt">
-
-                                      <h2 class="post-title">
-                                        <div class="panel-heading">
-                                          <h4 class="panel-title font-alt"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#supportsupport'.$linha['id'].'">Coleção</a></h4>
-                                        </div>
-                                      </h2>
-
-                                    </div>
-                            
-                                    <div class="panel-collapse collapse" id="supportsupport'.$linha['id'].'">
-                                      <div class="panel-body">
-                                        <div class="post-entry">
-
-                                          <div class="post-meta">Cursos - 2023.2</div>
-
-                                          <p>Colação de Grau da turma de Direito 2018.1 realizada na Faculdade Luciano Feijão no dia 17 de Novembro de 2023</p> '?>
-
-                                        <?php 
-
-                                          $sql = "select * from arquivo order by id desc"; 
-
-                                          //executa o comando sql
-                                          $consulta = $conexao->query($sql);
-
-                                          //testar se deu certo o comando
-                                          if($consulta){
-                                              //verificando se existe o usuario
-                                              if($consulta->num_rows > 0){
-                                              //convertendo a consulta num array
-                                                while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
-
-                                                  echo '<div class="col-sm-6 col-md-4 col-lg-4">
-                                                          <div class="gallery-item">
-                                                              <div class="gallery-image"><a class="gallery" href="'.$linha['local'].'" title="Title 1"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
-                                                                <div class="gallery-caption">
-                                                                  <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                                                              </div></a></div>
-                                                          </div>
-                                                        </div>';
-                                                }
-                                              }
-                                          }; 
-                                        ?>
-
-                                        </div> 
-                                      </div>
-                                    </div>
-
-                                </div>
-                              </div>
-                <?php 
-                     }
-                   }
-                 };
-                ?>   
+                        <div class="post-thumbnail">
+                        <label for="capa" id="Label">
+                            <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
+                        </label>          
+                        <input type="file" name="capa" id="capa" accept="image/*" style="display:none;">
+                        </div>
                 
-              
+                    </div>
+                </div>   
 
+                <div class="col-sm-6 col-md-6 col-lg-7">
+                    <div class="post">
+                
+                        <div class="post-header font-alt">
+                            <div class="post-entry">
+                            <div class="post-entry">
+
+                            <h2 class="post-title">
+                                <input class="form-control mt-10 mb-20" rows="1" id="titulo" name="titulo" placeholder="Nome da Coleção">
+                            </h2>
+
+                            <div class="post-entry">
+                            <div class="post-entry">
+
+                            <h2 class="post-title">
+
+                                <input class="form-control mt-10 mb-20" rows="1" id="tema" name="tema" placeholder="Tema">
+                            </h2>
+
+                            <div class="post-entry">
+                            <div class="post-entry">
+
+                            <h2 class="post-title">
+                                <input class="form-control mt-10 mb-20" rows="2" id="desc" name="desc" placeholder="Descrição">
+                            </h2>
+
+                            <div class="post-entry">
+                            <div class="post-entry">
+
+                            <label for="fileInput" class="btn btn-d btn-round" style="margin-top:4px; float:left;"><i class="fa fa-fw">&#xF115;</i> Selecionar Imagens da Colação</label>
+                            <input multiple type="file" id="fileInput" name="files[]" style="display:none;">
+
+                            <label for="enviar" class="btn btn-d btn-round" style="margin-top:4px;"><i class="fa fa-fw">&#xF0C7;</i> Criar Coleção</label>
+                            <input type="submit" id="enviar" name="enviar" style="display:none;">
+ 
+                        </div>
+
+                    </div>
+                </div> 
+            </form>
             </div>
           </div>
         </section>
@@ -335,6 +307,87 @@
     <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.getElementById("Label").addEventListener("click", function() {
+            document.getElementById("arquivo").click();
+        });
+
+        document.getElementById("arquivo").addEventListener("change", function() {
+            uploadFile();
+        });
+
+
+
+        function uploadFile() {
+          <?php
+
+          include("php/banco.php");
+
+          //CRIANDO PASTA DA COLEÇÃO
+          $pasta_col = "assets/images/colecao/".$_POST['titulo']."/";
+          mkdir($pasta_col, 0777, true);
+
+          $capa = $_FILES['capa']['tmp_name'];
+
+          if (!empty($capa)){
+            $file = getimagesize($capa);
+            
+            //TESTA A EXTENSÃO DO ARQUIVO
+            if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
+                echo "erro - extensão não permitida";
+                exit();
+            }
+
+            //CAPTURA A EXTENSÃO DO ARQUIVO
+            $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+            //MONTA O CAMINHO DO NOVO DESTINO DA PASTA
+            $new_name = 'capa_'.$_POST['titulo'];
+            $path_capa = $pasta_col. $new_name . '.' . $extensao;  
+            move_uploaded_file ($capa , $path_capa );
+
+            $titulo = $_POST['titulo'];
+            $tema = $_POST['tema'];
+            $desc = $_POST['desc'];
+
+            $sql = "INSERT INTO `colecao`(`id_col`, `capa_col`, `path_capa`, `nome_pasta`, `tema`, `desc`) VALUES ('null','$new_name','$path_capa','$titulo','$tema','$desc')";
+
+            //;
+            $add = $conexao->query($sql);
+
+            $imgs = $_FILES['imgs']['tmp_name'];
+   
+            // Processar o upload de imagens
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["files"])) {
+                $files = $_FILES["files"];
+
+                $pasta_imgs = "assets/images/colecao/".$_POST['titulo']."/".'imagens/';
+                mkdir($pasta_imgs, 0777, true);
+
+                for ($i = 0; $i < count($files["name"]); $i++) {
+
+                    //CAPTURA A EXTENSÃO DO ARQUIVO
+                    $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+                    $new_name = uniqid().'.'.$extensao;
+                    
+                    $filename = $pasta_imgs . basename([$new_name][$i]);
+                    move_uploaded_file($files["tmp_name"][$i], $filename);
+
+                    // Salvar informações no banco de dados
+                    $sql = "INSERT INTO `imgs-col` (`id-col`, `colecao`, `img`, `local`) VALUES ('null', '$titulo','" . $files["file"][$i] . "', '" . $filename . "')";
+                    $conn->query($sql);
+                }
+
+                echo "Upload realizado com sucesso.";
+            }
+                
+            }
+          
+          ?>
+        }
+    </script>
 
   </body>
 </html>
