@@ -187,8 +187,8 @@
                             <div class="post-entry">
                             <div class="post-entry">
 
-                            <label for="fileInput" class="btn btn-d btn-round" style="margin-top:4px; float:left;"><i class="fa fa-fw">&#xF115;</i> Selecionar Imagens da Colação</label>
-                            <input multiple type="file" id="fileInput" name="files[]" style="display:none;">
+                            <label for="files[]" class="btn btn-d btn-round" style="margin-top:4px; float:left;"><i class="fa fa-fw">&#xF115;</i> Selecionar Imagens da Colação</label>
+                            <input multiple="multiple" type="file" id="files[]" name="files[]" style="display:none;">
 
                             <label for="enviar" class="btn btn-d btn-round" style="margin-top:4px;"><i class="fa fa-fw">&#xF0C7;</i> Criar Coleção</label>
                             <input type="submit" id="enviar" name="enviar" style="display:none;">
@@ -319,7 +319,7 @@
 
 
 
-        function uploadFile() {
+        function uploadFile($_POST['enviar']) {
           <?php
 
           include("php/banco.php");
@@ -353,37 +353,42 @@
 
             $sql = "INSERT INTO `colecao`(`id_col`, `capa_col`, `path_capa`, `nome_pasta`, `tema`, `desc`) VALUES ('null','$new_name','$path_capa','$titulo','$tema','$desc')";
 
-            //;
             $add = $conexao->query($sql);
 
             $imgs = $_FILES['imgs']['tmp_name'];
-   
+    
+            
             // Processar o upload de imagens
-            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["files"])) {
-                $files = $_FILES["files"];
+            
+            if (isset($_FILES["files"]) && isset($_POST['titulo'])) {
 
-                $pasta_imgs = "assets/images/colecao/".$_POST['titulo']."/".'imagens/';
+              include("php/banco.php");
+                $titulo = $_POST['titulo'];
+                $pasta_imgs = "assets/images/colecao/" . $titulo . "/imagens/";
                 mkdir($pasta_imgs, 0777, true);
-
+            
+                $files = $_FILES["files"];
+            
                 for ($i = 0; $i < count($files["name"]); $i++) {
+                    $filename = basename($files["name"][$i]);
+                    $filetmp = $files["tmp_name"][$i];
+            
+                    // Mova o arquivo para o diretório
+                    $targetPath = $pasta_imgs . $filename;
+                    move_uploaded_file($filetmp, $targetPath);
 
-                    //CAPTURA A EXTENSÃO DO ARQUIVO
-                    $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+                    // Salve as informações no banco de dados
+                    $sql1 = "INSERT INTO `imgs_col` (`id_col`, `colecao`, `img`, `local`) VALUES (NULL, '$titulo', '$filename', '$targetPath')";
+                    $conexao->query($sql1);
 
-                    $new_name = uniqid().'.'.$extensao;
-                    
-                    $filename = $pasta_imgs . basename([$new_name][$i]);
-                    move_uploaded_file($files["tmp_name"][$i], $filename);
-
-                    // Salvar informações no banco de dados
-                    $sql = "INSERT INTO `imgs-col` (`id-col`, `colecao`, `img`, `local`) VALUES ('null', '$titulo','" . $files["file"][$i] . "', '" . $filename . "')";
-                    $conn->query($sql);
                 }
 
-                echo "Upload realizado com sucesso.";
-            }
                 
             }
+
+            
+            
+          }
           
           ?>
         }
