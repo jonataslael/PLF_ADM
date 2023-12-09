@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+  include ('php/banco.php');
+?>
+
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -136,67 +141,42 @@
         <section class="module-small">
           <div class="container">
             <div class="row">
-              <div class="col-sm-8">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Blog Featured Image"/></div>
-                  <div class="post-header font-alt">
-                    <h1 class="post-title">9 estagiários VS 1 computador</h1>
-                    <div class="post-meta">By Nadson Nascimento | 09 de Agosto | 3 Comments | Fotografia, Estágio.
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>No dia nove de Agosto de 2023, os estagiários da Faculdade Luciano Feijão, com bastante luta conseguiram montar e ligar um computador.</p>
-                    <p>Nove estagiários entusiasmados decidem montar um computador do zero, na Faculdade Luciano Feijão, que enfrentam desafios como peças defeituosas. O computador montado não apenas funciona perfeitamente, mas também fortalece os laços entre os estagiários e inspira outros estudantes na região.</p>
-                  </div>
-                </div>
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colação-wallpaper.png" alt="Blog Featured Image"/></div>
-                  <div class="post-header font-alt">
-                    <h1 class="post-title">Colação de Grau Direito 2023.2</h1>
-                    <div class="post-meta">By Nadson Nascimento | 23 Novembro | 3 Comments | Fotografia, Colação de Grau Cursos.
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>No dia 23 de Outubro, os alunos dos cursos de Administração, Direito, Engenharia Civil e Psicologia formaram-se e subiram o degrau mais alto da jornada da graduação a Colação de Grau.</p>
-                    <p>Colar grau é a realização do sonho dos nossos brilhantes acadêmicos que agora ingressam no mercado de trabalho como profissionais dentro das suas áreas. A conquista do diploma é o primeiro passo para essa nova fase de sucesso da vida de cada um.</p>
-                  </div>
-                </div>
+            
+              <?php
+
+              $sql = "select * from blog order by id desc"; 
+
+              //executa o comando sql
+                $consulta = $conexao->query($sql);
                 
-              </div>
-              <div class="col-sm-12 col-md-3 col-md-offset-1 sidebar">
-                <div class="widget">
-                  <form role="form">
-                    <div class="search-box">
-                      <input class="form-control" type="text" placeholder="Search..."/>
-                      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                  </form>
-                </div>
-                
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Publicações Recentes</h5>
-                  <ul class="widget-posts">
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="tags-ex.php"><img src="assets/images/Colação de grau.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="tags-ex.php">Colação de Grau Cursos</a></div>
+                //testar se deu certo o comando
+                if($consulta){
+                    //verificando se existe o usuario
+                    if($consulta->num_rows > 0){
+                    //convertendo a consulta num array
+                    while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+              echo 
+                '
+                <div class="col-sm-6">
+                  <div class="post">
+                    <div class="post-thumbnail"><img src="'.$linha['path_blog'].'" alt="Blog Featured Image"/></div>
+                      <div class="post-header font-alt">
+                        <h1 class="post-title">'.$linha['titulo'].'</h1>
+                        <div class="post-meta">'.$linha['informacoes'].'</div>
                       </div>
-                    </li>
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="tags-ex2.php"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="tags-ex2.php">Estagiários vs PC</a></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Tag</h5>
-                  <div class="tags font-serif"><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a>
+                    <div class="post-entry">
+                      <p>'.$linha['p1'].'</p>
+                      <p>'.$linha['p2'].'</p>
+                      <p>'.$linha['p3'].'</p>
+                    </div>
                   </div>
-                </div>
-                
-              </div>
+                </div>';
+                  }
+                  }
+                };
+              ?>
+              
             </div>
           </div>
         </section>

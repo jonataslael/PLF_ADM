@@ -135,86 +135,76 @@
       <div class="main">
         <section class="module">
           <div class="container">
-            <div class="row multi-columns-row post-columns">
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/cgrau/cgrau-7.jpg" alt="Blog-post Thumbnail"/></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-cgrau.php">Colação de Grau</a></h2>
-                    <div class="post-meta">Cursos - 2023.2
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>Colação de Grau da turma de Direito 2018.1 realizada na Faculdade Luciano Feijão no dia 17 de Novembro de 2023</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/cgrau/cgrau-7.jpg" alt="Blog-post Thumbnail"/></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-cgrau.php">Colação de Grau</a></h2>
-                    <div class="post-meta">Cursos - 2023.2
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>Colação de Grau da turma de Direito 2018.1 realizada na Faculdade Luciano Feijão no dia 17 de Novembro de 2023</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/cgrau/cgrau-7.jpg" alt="Blog-post Thumbnail"/></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-cgrau.php">Colação de Grau</a></h2>
-                    <div class="post-meta">Cursos - 2023.2
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>Colação de Grau da turma de Direito 2018.1 realizada na Faculdade Luciano Feijão no dia 17 de Novembro de 2023</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/estagiarios/col-6.jpg" alt="Blog-post Thumbnail"/></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-estagio.php">Estágio FLF</a></h2>
-                    <div class="post-meta">2023
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>Registros dos Estagiários 2023 na Faculdade Luciano Feijão</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/estagiarios/col-6.jpg" alt="Blog-post Thumbnail"/></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-estagio.php">Estágio FLF</a></h2>
-                    <div class="post-meta">2023
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>Registros dos Estagiários 2023 na Faculdade Luciano Feijão</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post">
-                  <div class="post-thumbnail"><img src="assets/images/colecao/estagiarios/col-6.jpg" alt="Blog-post Thumbnail"/></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="col-estagio.php">Estágio FLF</a></h2>
-                    <div class="post-meta">2023
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>Registros dos Estagiários 2023 na Faculdade Luciano Feijão</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            <?php
+                include('php/banco.php');
+
+                // Consulta SQL para recuperar todas as coleções e suas imagens relacionadas
+                $sql = "SELECT colecao.*, GROUP_CONCAT(imgs_col.local_img) AS fotos
+                        FROM colecao
+                        LEFT JOIN imgs_col ON colecao.nome_pasta = imgs_col.colecao
+                        GROUP BY colecao.nome_pasta";
+
+                // Executa o comando SQL
+                $consulta = $conexao->query($sql);
+
+                // Testa se deu certo o comando
+                if ($consulta) {
+                    // Verifica se existem coleções
+                    if ($consulta->num_rows > 0) {
+                        // Exibe as coleções e suas fotos
+                        while ($linha = $consulta->fetch_array(MYSQLI_ASSOC)) {
+                            echo '<div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="post">
+
+                                    <div class="post-thumbnail"><img src="'.$linha['path_capa'].'" alt="Blog-post Thumbnail"/></div>
+
+                                    <div class="post-header font-alt">
+                                        <h2 class="post-title">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title font-alt"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#supportsupport'.$linha['id_col'].'">'.$linha['nome_pasta'].'</a></h4>
+                                        </div>
+                                        </h2>
+                                    </div>
+                                
+                                    <div class="panel-collapse collapse" id="supportsupport'.$linha['id_col'].'">
+                                        <div class="panel-body">
+                                        <div class="post-entry">
+
+                                            <div class="post-meta">'.$linha['tema'].'</div>
+
+                                            <p>'.$linha['desc'].'</p>';
+
+                            // Verifica se há fotos para a coleção
+                            if (!empty($linha['fotos'])) {
+                                $fotos = explode(',', $linha['fotos']);
+                                foreach ($fotos as $foto) {
+                                    echo '<div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="gallery-item">
+                                                <div class="gallery-image">
+                                                    <a class="gallery" href="' . $foto . '" title="Title 1">
+                                                        <img src="' . $foto . '" alt="Gallery Image"/>
+                                                        <div class="gallery-caption">
+                                                            <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                }
+                            } else {
+                                echo 'Nenhuma foto encontrada para esta coleção.';
+                            }
+
+                            echo '</div></div></div></div></div>';
+                        }
+                    } else {
+                        echo 'Nenhuma coleção encontrada.';
+                    }
+                } else {
+                    echo 'Erro na consulta SQL: ' . $conexao->error;
+                }
+            ?> 
             
           </div>
         </section>

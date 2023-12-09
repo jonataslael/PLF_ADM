@@ -154,6 +154,10 @@
         </section>
         <section class="module">
           <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Nossos Trabalhos</h2>
+            </div>
+
           <?php
 
           $sql = "select * from arquivo order by rand(), id asc limit 9"; 

@@ -163,7 +163,7 @@
                   </div>
                   <div class="team-descr font-alt">
                     <div class="team-name">Viviane Matos</div>
-                    <div class="team-role">Art Director</div>
+                    <div class="team-role">Art Designer</div>
                   </div>
                 </div>
               </div>
@@ -173,7 +173,7 @@
                   </div>
                   <div class="team-descr font-alt">
                     <div class="team-name">Nadson Nascimento</div>
-                    <div class="team-role">Art Director</div>
+                    <div class="team-role">Dev Front-End</div>
                   </div>
                 </div>
               </div>
@@ -183,7 +183,7 @@
                   </div>
                   <div class="team-descr font-alt">
                     <div class="team-name">Débora Torres</div>
-                    <div class="team-role">Art Director</div>
+                    <div class="team-role">Art Designer</div>
                   </div>
                 </div>
               </div>
@@ -193,7 +193,7 @@
                   </div>
                   <div class="team-descr font-alt">
                     <div class="team-name">Jonatas Lael</div>
-                    <div class="team-role">Art Director</div>
+                    <div class="team-role">Dev Back-End</div>
                   </div>
                 </div>
               </div>

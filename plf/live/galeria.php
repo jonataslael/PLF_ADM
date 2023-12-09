@@ -142,33 +142,35 @@
       <div class="main">
       <section class="module">
           <div class="container">
-          <?php
+          <?php 
 
-          $sql = "select * from arquivo order by id desc"; 
+              $sql = "select * from arquivo order by id desc"; 
 
-          //executa o comando sql
-            $consulta = $conexao->query($sql);
+              //executa o comando sql
+              $consulta = $conexao->query($sql);
+              
+              //testar se deu certo o comando
+              if($consulta){
+                  //verificando se existe o usuario
+                  if($consulta->num_rows > 0){
+                  //convertendo a consulta num array
+                    while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
             
-            //testar se deu certo o comando
-            if($consulta){
-                //verificando se existe o usuario
-                if($consulta->num_rows > 0){
-                //convertendo a consulta num array
-                while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
-
-          echo 
-            '<div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="gallery-item">
-                    <div class="gallery-image"><a class="gallery" href="'.$linha['local'].'" title="Title 2"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
-                      <div class="gallery-caption">
-                        <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
-                    </div></a></div>
-                </div>
-              </div>';
-              }
-              }
-            };
-          ?>
+                      echo '<div class="col-sm-6 col-md-4 col-lg-3">
+                              <div class="gallery-item">
+                                <div class="gallery-image">
+                                  <a class="gallery" href="'.$linha['local'].'" title="Title 1"><img src="'.$linha['local'].'" alt="Gallery Image'.$linha['id'].'"/>
+                                    <div class="gallery-caption">
+                                      <div class="gallery-icon"><span class="icon-magnifying-glass"></span></div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>';
+                    }
+                  }
+              };
+            ?>
 
           </div>
         </section>

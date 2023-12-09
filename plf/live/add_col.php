@@ -378,7 +378,7 @@
                     move_uploaded_file($filetmp, $targetPath);
 
                     // Salve as informações no banco de dados
-                    $sql1 = "INSERT INTO `imgs_col` (`id_col`, `colecao`, `img`, `local`) VALUES (NULL, '$titulo', '$filename', '$targetPath')";
+                    $sql1 = "INSERT INTO `imgs_col` (`id_img`, `colecao`, `img`, `local_img`) VALUES (NULL, '$titulo', '$filename', '$targetPath')";
                     $conexao->query($sql1);
 
                 }

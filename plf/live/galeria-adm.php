@@ -143,11 +143,11 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
               
               <form class="" id="uploadForm" method="POST" enctype="multipart/form-data">   
-                <label for="file" id="Label">
+                <label for="arquivo" id="Label">
                   <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
                 </label>          
                 <!-- <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;" onchange="submitForm(this)">  -->
-                <input multiple type="file" name="arquivo" id="file" accept="image/*" style="display:none;" > 
+                <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;" onchange="submitForm()"> 
               </form>
               
             </div>
@@ -291,81 +291,10 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-      function submitForm() {
-      
-        var _URL = window.URL || window.webkitURL;
-
-       var target = document.getElementById('arquivo')
-       console.log(target.value)
-        var file, img;
-
-
-        if ((file = target.value)) {
-            img = new Image();
-          img.onload = function() {
-              alert(target.value.width + " " + target.value.height);
-          };
-          img.onerror = function() {
-              alert( "not a valid file: " + file.type);
-          };
-          img.src = _URL.createObjectURL(file);
-
-        } 
-       
-        //
+      function submitForm(){
+        document.getElementById("uploadForm").submit();
       }
-
-      var _URL = window.URL || window.webkitURL;
-        $("#file").change(function (e) {
-            var file, img;
-            if ((file = this.files[0])) {
-                img = new Image();
-                var objectUrl = _URL.createObjectURL(file);
-                img.onload = function () {
-                  if(this.width == '1280' && this.height == '853'){
-                    
-                    document.getElementById("uploadForm").submit();
-                    _URL.revokeObjectURL(objectUrl);
-                  }else{
-                    alert('por favor, coloque uma imagem com o tamanho permitido');
-                  }
-                };
-                img.src = objectUrl;
-            }
-        });
     </script>
-
-    <?php
-
-      include("php/banco.php");
-
-      if (!empty($foto)){
-
-          $foto = $_FILES['arquivo']['tmp_name'];
-
-          $pasta = 'assets/images/gallery/';
-          
-          $file = getimagesize($foto);
-          
-          //TESTA A EXTENSÃO DO ARQUIVO
-          if(!preg_match('/^image\/(?:jpg|jpeg|png)$/i', $file['mime'])){
-              echo "erro - extensão não permitida";
-              exit();
-          }
-
-          //CAPTURA A EXTENSÃO DO ARQUIVO
-          $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
-
-          //MONTA O CAMINHO DO NOVO DESTINO
-          $new_name = uniqid('', true);
-          $path = "{$pasta}". $new_name . '.' . $extensao;  
-          move_uploaded_file ($foto , $path );
-
-          $sql = "insert into arquivo (id, nome, local) VALUES('null', '$new_name', '$path')";
-          $add = $conexao->query($sql);
-
-    } 
-  ?>
 
     <script>
         document.getElementById("Label").addEventListener("click", function() {
@@ -408,6 +337,9 @@
           } 
 
           ?>
+
+          
+          
         }
 
     </script>

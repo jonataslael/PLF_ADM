@@ -143,82 +143,49 @@
       <div class="main">
         <section class="module-small">
           <div class="container">
+
             <div class="row">
-              <div class="col-sm-8">
 
-              <?php
+            <div class="col-sm-3">
+              <a href="add_post.php" class="btn btn-round btn-d" type="submit"><i class="fa fa-fw">&#xF055;</i> Criar Novo Post</a>
+            </div>
 
-                $sql = "select * from blog order by id desc"; 
+            <?php
 
-                //executa o comando sql
-                  $consulta = $conexao->query($sql);
-                  
-                  //testar se deu certo o comando
-                  if($consulta){
-                      //verificando se existe o usuario
-                      if($consulta->num_rows > 0){
-                      //convertendo a consulta num array
-                      while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+            $sql = "select * from blog order by id desc"; 
 
-                echo 
-                  '<div class="post">
-                    <div class="post-thumbnail"><img src="'.$linha['path_blog'].'" alt="Blog Featured Image"/></div>
-                      <div class="post-header font-alt">
-                        <h1 class="post-title">'.$linha['titulo'].'</h1>
-                        <div class="post-meta">'.$linha['informacoes'].'</div>
-                      </div>
-                    <div class="post-entry">
-                      <p>'.$linha['p1'].'</p>
-                      <p>'.$linha['p2'].'</p>
-                      <p>'.$linha['p3'].'</p>
+            //executa o comando sql
+              $consulta = $conexao->query($sql);
+              
+              //testar se deu certo o comando
+              if($consulta){
+                  //verificando se existe o usuario
+                  if($consulta->num_rows > 0){
+                  //convertendo a consulta num array
+                  while($linha=$consulta->fetch_array(MYSQLI_ASSOC)){
+
+            echo 
+              '
+              <div class="col-sm-6">
+                <div class="post">
+                  <div class="post-thumbnail"><img src="'.$linha['path_blog'].'" alt="Blog Featured Image"/></div>
+                    <div class="post-header font-alt">
+                      <h1 class="post-title">'.$linha['titulo'].'</h1>
+                      <div class="post-meta">'.$linha['informacoes'].'</div>
                     </div>
-                  </div>';
-                    }
-                    }
-                  };
-                ?>
-                
-              </div>
-
-              <div class="col-sm-12 col-md-3 col-md-offset-1 sidebar">
-
-                <div class="widget">
-                  <a href="add_post.php" class="btn btn-round btn-d" type="submit" style="width:100%;"><i class="fa fa-fw">&#xF055;</i> Criar Novo Post</a>
-                </div>
-
-                <div class="widget">
-                  <form role="form">
-                    <div class="search-box">
-                      <input class="form-control" type="text" placeholder="Search..."/>
-                      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                  </form>
-                </div>
-                
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Publicações Recentes</h5>
-                  <ul class="widget-posts">
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="tags-ex.php"><img src="assets/images/Colação de grau.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="tags-ex.php">Colação de Grau Cursos</a></div>
-                      </div>
-                    </li>
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="tags-ex2.php"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="tags-ex2.php">Estagiários vs PC</a></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Tag</h5>
-                  <div class="tags font-serif"><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a>
+                  <div class="post-entry">
+                    <p>'.$linha['p1'].'</p>
+                    <p>'.$linha['p2'].'</p>
+                    <p>'.$linha['p3'].'</p>
                   </div>
                 </div>
-                
-              </div>
+              </div>';
+                }
+                }
+              };
+            ?>
+
+              
             </div>
           </div>
         </section>
