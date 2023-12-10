@@ -148,11 +148,11 @@
                 <div class="col-sm-6 col-md-6 col-lg-5">
                     <div class="post">
 
-                        <div class="post-thumbnail">
+                        <div class="post-thumbnail" id="preview">
                         <label for="capa" id="Label">
                             <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
                         </label>          
-                        <input type="file" name="capa" id="capa" accept="image/*" style="display:none;">
+                        <input type="file" name="capa" id="capa" accept="image/*" style="display:none;" onchange="previewImage()">
                         </div>
                 
                     </div>
@@ -187,7 +187,7 @@
                             <div class="post-entry">
                             <div class="post-entry">
 
-                            <label for="files[]" class="btn btn-d btn-round" style="margin-top:4px; float:left;"><i class="fa fa-fw">&#xF115;</i> Selecionar Imagens da Colação</label>
+                            <label for="files[]" id="contador" class="btn btn-d btn-round" style="margin-top:4px; float:left;"><i class="fa fa-fw">&#xF115;</i> Selecionar Imagens da Coleção</label>
                             <input multiple="multiple" type="file" id="files[]" name="files[]" style="display:none;">
 
                             <label for="enviar" class="btn btn-d btn-round" style="margin-top:4px;"><i class="fa fa-fw">&#xF0C7;</i> Criar Coleção</label>
@@ -310,14 +310,35 @@
 
     <script>
         document.getElementById("Label").addEventListener("click", function() {
-            document.getElementById("arquivo").click();
+            document.getElementById("capa").click();
         });
 
-        document.getElementById("arquivo").addEventListener("change", function() {
+        document.getElementById("capa").addEventListener("change", function() {
             uploadFile();
         });
 
+        // function previewImage() {
+        //     var preview = document.getElementById('preview');
+        //     var fileInput = document.getElementById('arquivo');
+        //     var file = fileInput.files[0];
 
+        //     if (file) {
+        //         var reader = new FileReader();
+
+        //         reader.onload = function(e) {
+        //             preview.innerHTML = '<img src="' + e.target.result + '" alt="Imagem Selecionada">';
+        //         };
+
+        //         reader.readAsDataURL(file);
+        //     } else {
+        //         preview.innerHTML = '';
+        //     }
+        // }
+
+        // document.getElementById('files').addEventListener('change', function () {
+        //     var contador = document.getElementById('contador');
+        //     contador.textContent = this.files.length + ' imagem(ns) selecionada(s)';
+        // });
 
         function uploadFile($_POST['enviar']) {
           <?php
@@ -361,33 +382,32 @@
             // Processar o upload de imagens
             
             if (isset($_FILES["files"]) && isset($_POST['titulo'])) {
-
               include("php/banco.php");
-                $titulo = $_POST['titulo'];
-                $pasta_imgs = "assets/images/colecao/" . $titulo . "/imagens/";
-                mkdir($pasta_imgs, 0777, true);
-            
-                $files = $_FILES["files"];
-            
-                for ($i = 0; $i < count($files["name"]); $i++) {
-                    $filename = basename($files["name"][$i]);
-                    $filetmp = $files["tmp_name"][$i];
-            
-                    // Mova o arquivo para o diretório
-                    $targetPath = $pasta_imgs . $filename;
-                    move_uploaded_file($filetmp, $targetPath);
-
-                    // Salve as informações no banco de dados
-                    $sql1 = "INSERT INTO `imgs_col` (`id_img`, `colecao`, `img`, `local_img`) VALUES (NULL, '$titulo', '$filename', '$targetPath')";
-                    $conexao->query($sql1);
-
-                }
-
-                
-            }
-
-            
-            
+          
+              $titulo = $_POST['titulo'];
+              $pasta_imgs = "assets/images/colecao/" . $titulo . "/imagens/";
+              
+              // Certifique-se de que o diretório exista ou crie-o
+              if (!file_exists($pasta_imgs)) {
+                  mkdir($pasta_imgs, 0755, true);
+              }
+          
+              $files = $_FILES["files"];
+          
+              for ($i = 0; $i < count($files["name"]); $i++) {
+                  $filename = uniqid('', true);
+                  $extensao = pathinfo($files['name'][$i], PATHINFO_EXTENSION);
+          
+                  // Mova o arquivo para o diretório
+                  $targetPath = $pasta_imgs . $filename . '.' . $extensao;
+                  move_uploaded_file($files['tmp_name'][$i], $targetPath);
+          
+                  // Salve as informações no banco de dados
+                  $sql1 = "INSERT INTO imgs_col (id, colecao, img, local_img) VALUES (NULL, '$titulo', '$filename', '$targetPath')";
+                  $conexao->query($sql1);
+              }
+          }
+  
           }
           
           ?>

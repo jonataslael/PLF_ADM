@@ -3,6 +3,7 @@
 <?php 
 
   include('php/banco.php');
+  include('php/login.php');
 
 ?>
     
@@ -75,33 +76,63 @@
           </div>
         </section>
         <section class="boxLogin container">
-          <div class="content">
-            <div class="col-3"></div>
-            <div class="col-6">
-              <div class="box-formulario" style="margin: 60px;">
-                <div class="formulario">
-                    <div class="title-form">
-                      <h1><i class="icon icon-comments-o"></i>Login</h1>
-                    </div>
-                    <form class="" action="php/login.php" method="post">
-                        <span>
-                            <input type="text" class="input-slide" id="email" name="email" placeholder="E-mail" autocomplete="off" required=""/>
-                            <label for="email"> <i class="fa fa-fw">&#xF0E0;</i> </label>
-                        </span>
-                        <span>
-                            <input type="password" class="input-slide" id="senha" name="senha" placeholder="Senha" autocomplete="off" required=""/>
-                            <label for="senha"> <i class="fa fa-fw">&#xF084;</i> </label>
-                        </span>
-                        <div class="box-btn">
-                            <button type="submit" id="entrar" name="entar" class="btn-envia zoom-shadow">
-                              Entar <i class="fa fa-fw">&#xF090;</i> 
-                            </button>
-                        </div>
-                    </form>
-                </div>
-          </div>
+        <div class="content">
+
+            <div class="row">
+
               <div class="col-3"></div>
-           </div>
+
+              <div class="col-6">
+                
+                <div class="box-formulario" style="margin-left: 60px; margin-top:10px;">
+
+                
+                <?php
+                  if (isset($_GET['login'])) {
+                      if ($_GET['login'] == 'semsessao') {
+                          echo '<div class="alert alert-warning" role="alert" style="width:650px;">
+                                  <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button><i class="fa fa-fw">&#xf06a;</i>Atenção, preencha os campos abaixo para acessar o Dashboard.
+                                </div>';
+                      } elseif ($_GET['login'] == 'erro') {
+                          echo '<div class="alert alert-warning" role="alert" style="width:650px;">
+                                  <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button><i class="fa fa-fw">&#xf06a;</i>E-mail ou Senha Inválidos. Por favor, insira os valores corretamente.
+                                </div>';
+                      }
+                      
+                  }
+                ?>
+             
+                
+                  <div class="formulario">
+                    
+                      <div class="title-form">
+                        <h1><i class="icon icon-comments-o"></i>Login</h1>
+                      </div>
+
+
+                      <form class="" action="php/login.php" method="POST">
+                          <span>
+                              <input type="text" class="input-slide" id="email" name="email" placeholder="E-mail" autocomplete="off" required=""/>
+                              <label for="email"> <i class="fa fa-fw">&#xF0E0;</i> </label>
+                          </span>
+                          <span>
+                              <input type="password" class="input-slide" id="senha" name="senha" placeholder="Senha" autocomplete="off" required=""/>
+                              <label for="senha"> <i class="fa fa-fw">&#xF084;</i> </label>
+                          </span>
+                          <div class="box-btn">
+                              <button type="submit" id="entrar" name="entar" class="btn-envia zoom-shadow">
+                                Entar <i class="fa fa-fw">&#xF090;</i> 
+                              </div>
+                              </button>
+                      </form>
+
+                  </div>
+              </div>
+
+                <div class="col-3"></div>
+            </div>  
+            </div>
+
            </section><!--Login-->
       </div>
       <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <?php
-
   include('php/banco.php');
-
+  include('php/login.php');
+  include('php/testasessao.php');
 ?>
 
 <html lang="en-US" dir="ltr">
@@ -144,11 +144,13 @@
         <section class="module-small">
           <div class="container">
 
+            <div class="widget row">
+              <a href="add_post.php" class="btn btn-round btn-d" type="submit" style="margin-bottom:20px; float:left; margin-left:15px;"><i class="fa fa-fw">&#xF055;</i> Criar Novo Post</a>
+            </div>
+
             <div class="row">
 
-            <div class="col-sm-3">
-              <a href="add_post.php" class="btn btn-round btn-d" type="submit"><i class="fa fa-fw">&#xF055;</i> Criar Novo Post</a>
-            </div>
+            
 
             <?php
 

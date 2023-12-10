@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/12/2023 às 20:47
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 10/12/2023 às 21:34
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,8 @@ INSERT INTO `arquivo` (`id`, `nome`, `local`) VALUES
 (61, '656f73ba056899.52317687', 'assets/images/gallery/656f73ba056899.52317687.jpeg'),
 (62, '656f73bf5c4826.43069233', 'assets/images/gallery/656f73bf5c4826.43069233.jpeg'),
 (63, '656f73c48318a7.84603277', 'assets/images/gallery/656f73c48318a7.84603277.jpeg'),
-(64, '656f73c9328340.54279255', 'assets/images/gallery/656f73c9328340.54279255.jpeg');
+(64, '656f73c9328340.54279255', 'assets/images/gallery/656f73c9328340.54279255.jpeg'),
+(65, '65731f9631fe29.62081922', 'assets/images/gallery/65731f9631fe29.62081922.jpeg');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,8 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `img_blog`, `path_blog`, `titulo`, `informacoes`, `p1`, `p2`, `p3`) VALUES
-(4, '656cf1713581c8.91270283', 'assets/images/blog/656cf1713581c8.91270283.jpeg', '9 EstagiÃ¡rios VS 1 PC', 'EstagiÃ¡rios 2023.2 | 09/08/2023 | Faculdade Luciano FeijÃ£o', 'No dia nove de Agosto de 2023, os estagiÃ¡rios da Faculdade Luciano FeijÃ£o, com bastante luta conseguiram montar e ligar um computador.', 'Nove estagiÃ¡rios entusiasmados decidem montar um computador do zero, na Faculdade Luciano FeijÃ£o, que enfrentam desafios como peÃ§as defeituosas. O computador montado nÃ£o apenas funciona perfeitamente, mas tambÃ©m fortalece os laÃ§os entre os estagiÃ¡rios e inspira outros estudantes na regiÃ£o.', '');
+(4, '656cf1713581c8.91270283', 'assets/images/blog/656cf1713581c8.91270283.jpeg', '9 EstagiÃ¡rios VS 1 PC', 'EstagiÃ¡rios 2023.2 | 09/08/2023 | Faculdade Luciano FeijÃ£o', 'No dia nove de Agosto de 2023, os estagiÃ¡rios da Faculdade Luciano FeijÃ£o, com bastante luta conseguiram montar e ligar um computador.', 'Nove estagiÃ¡rios entusiasmados decidem montar um computador do zero, na Faculdade Luciano FeijÃ£o, que enfrentam desafios como peÃ§as defeituosas. O computador montado nÃ£o apenas funciona perfeitamente, mas tambÃ©m fortalece os laÃ§os entre os estagiÃ¡rios e inspira outros estudantes na regiÃ£o.', ''),
+(14, '65761f99101331.73444555', 'assets/images/blog/65761f99101331.73444555.jpeg', 'teste', 'eesgsedgd', 'yyyyyyyyyyyyyyy', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,13 +97,9 @@ CREATE TABLE `colecao` (
 --
 
 INSERT INTO `colecao` (`id_col`, `capa_col`, `path_capa`, `nome_pasta`, `tema`, `desc`) VALUES
-(38, 'capa_888888888888', 'assets/images/colecao/888888888888/capa_888888888888.jpeg', '888888888888', '', ''),
-(39, 'capa_ççççççççççççç', 'assets/images/colecao/ççççççççççççç/capa_ççççççççççççç.jpeg', 'ççççççççççççç', '', ''),
-(40, 'capa_666666666666', 'assets/images/colecao/666666666666/capa_666666666666.jpeg', '666666666666', '', ''),
-(41, 'capa_rrrrrrrr', 'assets/images/colecao/rrrrrrrr/capa_rrrrrrrr.jpeg', 'rrrrrrrr', '', ''),
-(42, 'capa_qwqwwq', 'assets/images/colecao/qwqwwq/capa_qwqwwq.jpeg', 'qwqwwq', '', ''),
-(43, 'capa_11111111111', 'assets/images/colecao/11111111111/capa_11111111111.jpeg', '11111111111', '', ''),
-(44, 'capa_ppppppp', 'assets/images/colecao/ppppppp/capa_ppppppp.jpeg', 'ppppppp', '', '');
+(45, 'capa_teste', 'assets/images/colecao/teste/capa_teste.jpeg', 'teste', '123', '456'),
+(47, 'capa_teste3', 'assets/images/colecao/teste3/capa_teste3.jpeg', 'teste3', '123', '455'),
+(75, 'capa_teste final', 'assets/images/colecao/teste final/capa_teste final.jpeg', 'teste final', '', '');
 
 -- --------------------------------------------------------
 
@@ -130,15 +128,35 @@ INSERT INTO `contact` (`id`, `nome`, `email`, `telefone`, `assunto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `imgs-col`
+-- Estrutura para tabela `imgs_col`
 --
 
-CREATE TABLE `imgs-col` (
-  `id-col` int(11) NOT NULL,
+CREATE TABLE `imgs_col` (
+  `id` int(11) NOT NULL,
   `colecao` varchar(100) NOT NULL,
   `img` varchar(100) NOT NULL,
-  `local` varchar(100) NOT NULL
+  `local_img` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `imgs_col`
+--
+
+INSERT INTO `imgs_col` (`id`, `colecao`, `img`, `local_img`) VALUES
+(1, 'teste', 'big_1.jpg', 'assets/images/colecao/teste/imagens/big_1.jpg'),
+(2, 'teste', 'big_2.jpg', 'assets/images/colecao/teste/imagens/big_2.jpg'),
+(3, 'teste', 'big_3.jpg', 'assets/images/colecao/teste/imagens/big_3.jpg'),
+(4, 'teste', 'big_4.jpg', 'assets/images/colecao/teste/imagens/big_4.jpg'),
+(5, 'teste', 'big_5.jpg', 'assets/images/colecao/teste/imagens/big_5.jpg'),
+(6, 'teste', 'big_6.jpg', 'assets/images/colecao/teste/imagens/big_6.jpg'),
+(25, 'teste3', 'principal-1.jpg', 'assets/images/colecao/teste3/imagens/principal-1.jpg'),
+(26, 'teste3', 'principal-2.jpg', 'assets/images/colecao/teste3/imagens/principal-2.jpg'),
+(27, 'teste3', 'principal-3.jpg', 'assets/images/colecao/teste3/imagens/principal-3.jpg'),
+(28, 'teste3', 'principal-4.jpg', 'assets/images/colecao/teste3/imagens/principal-4.jpg'),
+(97, 'teste final', '65761ea54cfc45.22309341', 'assets/images/colecao/teste final/imagens/65761ea54cfc45.22309341.jpg'),
+(98, 'teste final', '65761ea55a9025.90836470', 'assets/images/colecao/teste final/imagens/65761ea55a9025.90836470.jpg'),
+(99, 'teste final', '65761ea5bfaad6.26861690', 'assets/images/colecao/teste final/imagens/65761ea5bfaad6.26861690.jpg'),
+(100, 'teste final', '65761ea5e0c901.06495653', 'assets/images/colecao/teste final/imagens/65761ea5e0c901.06495653.jpg');
 
 -- --------------------------------------------------------
 
@@ -188,10 +206,10 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `imgs-col`
+-- Índices de tabela `imgs_col`
 --
-ALTER TABLE `imgs-col`
-  ADD PRIMARY KEY (`id-col`);
+ALTER TABLE `imgs_col`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `login`
@@ -207,19 +225,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de tabela `arquivo`
 --
 ALTER TABLE `arquivo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de tabela `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `colecao`
 --
 ALTER TABLE `colecao`
-  MODIFY `id_col` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_col` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de tabela `contact`
@@ -228,10 +246,10 @@ ALTER TABLE `contact`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT de tabela `imgs-col`
+-- AUTO_INCREMENT de tabela `imgs_col`
 --
-ALTER TABLE `imgs-col`
-  MODIFY `id-col` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `imgs_col`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de tabela `login`

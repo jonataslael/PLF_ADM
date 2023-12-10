@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+  include('php/banco.php');
+?>
+
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -136,71 +141,46 @@
       <div class="main">
         <section class="module-small">
           <div class="container">
-          
             <div class="row">
-              <div class="col-sm-8">
+
+              <div class="col-sm-6">
                 <div class="post">
 
-                <form method="POST" enctype="multipart/form-data">
-                  <div class="post-thumbnail">
-                    <label for="arquivo" id="Label">
-                    <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
-                    </label>          
-                    <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;">      
-                  </div>
-                  <div class="post-header font-alt">
-                    <input class="form-control mt-10 mb-20" rows="1" id="title" name="title" placeholder="Nome do Evento">
-                    <input class="form-control" rows="1" id="anft" name="anft" placeholder="Anfitrião | Data | Tema, Sobre">
-                  </div>
-                  <div class="post-entry">
-                    <textarea class="form-control" rows="2" id="p1" name="p1" placeholder="Parágrafo 1"></textarea><br>
-                    <textarea class="form-control" rows="2" id="p2" name="p2" placeholder="Parágrafo 2"></textarea><br>
-                    <textarea class="form-control" rows="2" id="p3" name="p3" placeholder="Parágrafo 3"></textarea>
-                  </div>
+                  <form method="POST" enctype="multipart/form-data">
 
-                  <label for="enviar" class="btn btn-d btn-round" style="margin-top:10px;"><i class="fa fa-fw">&#xF0C7;</i> Salvar Post</label>
-                  <input type="submit" id="enviar" name="enviar" style="display:none;">
-
-                </div>
-                </form>
-
-              </div>
-              <div class="col-sm-12 col-md-3 col-md-offset-1 sidebar">
-                <div class="widget">
-                  <form role="form">
-                    <div class="search-box">
-                      <input class="form-control" type="text" placeholder="Search..."/>
-                      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                    <div class="post-thumbnail" id="preview">
+                      <label for="arquivo" id="Label">
+                      <img src="assets/images/icon-up.png" alt="Clique para enviar um arquivo"/>
+                      </label>          
+                      <input multiple type="file" name="arquivo" id="arquivo" accept="image/*" style="display:none;" onchange="previewImage()">      
                     </div>
-                  </form>
+                    
                 </div>
-                
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Publicações Recentes</h5>
-                  <ul class="widget-posts">
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="tags-ex.php"><img src="assets/images/Colação de grau.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="tags-ex.php">Colação de Grau Cursos</a></div>
-                      </div>
-                    </li>
-                    <li class="clearfix">
-                      <div class="widget-posts-image"><a href="tags-ex2.php"><img src="assets/images/principal-imgs/principal-1.jpg" alt="Post Thumbnail"/></a></div>
-                      <div class="widget-posts-body">
-                        <div class="widget-posts-title"><a href="tags-ex2.php">Estagiários vs PC</a></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="widget">
-                  <h5 class="widget-title font-alt">Tag</h5>
-                  <div class="tags font-serif"><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a><a href="tags-ex2.php" rel="tag">Estagio</a><a href="tags-ex.php" rel="tag">Colação de Grau</a>
-                  </div>
-                </div>
-                
               </div>
+
+              <div class="col-sm-6">
+                <div class="post">
+                    <div class="post-header font-alt">
+                      <input class="form-control mt-10 mb-20" rows="1" id="title" name="title" placeholder="Nome do Evento">
+                      <input class="form-control" rows="1" id="anft" name="anft" placeholder="Anfitrião | Data | Tema, Sobre">
+                    </div>
+
+                    <div class="post-entry">
+                      <textarea class="form-control" rows="5" id="p1" name="p1" placeholder="Descrição"></textarea><br>
+                    </div>
+
+                    <label for="enviar" class="btn btn-d btn-round" style="margin-top:10px;"><i class="fa fa-fw">&#xF0C7;</i> Salvar Post</label>
+                    <input type="submit" id="enviar" name="enviar" style="display:none;">
+
+                  </div>
+                  </form>
+
+                </div>
+              </div>
+              
             </div>
           </div>
+
         </section>
         <div class="module-small bg-dark2">
           <div class="container">
@@ -318,6 +298,24 @@
             uploadFile();
         });
 
+        function previewImage() {
+            var preview = document.getElementById('preview');
+            var fileInput = document.getElementById('arquivo');
+            var file = fileInput.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Imagem Selecionada">';
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = '';
+            }
+        }
+
         function uploadFile() {
           <?php
 
@@ -347,10 +345,9 @@
               $title = $_POST['title'];
               $anft = $_POST['anft'];
               $p1 = $_POST['p1'];
-              $p2 = $_POST['p2'];
-              $p3 = $_POST['p3'];
 
-              $sql = "insert into blog (id, img_blog, path_blog, titulo, informacoes, p1, p2, p3) VALUES('null', '$new_name', '$path', '$title', '$anft', '$p1', '$p2', '$p3')";
+
+              $sql = "insert into blog (id, img_blog, path_blog, titulo, informacoes, p1) VALUES('null', '$new_name', '$path', '$title', '$anft', '$p1')";
               $add = $conexao->query($sql);
 
           } 

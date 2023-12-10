@@ -1,8 +1,11 @@
-<?php 
-include("php/banco.php"); 
-?> 
-
 <!DOCTYPE html>
+
+<?php
+  include('php/banco.php');
+  include('php/login.php');
+  include('php/testasessao.php');
+?>
+
 <html lang="en-US" dir="ltr">
   <head>
     <meta charset="utf-8">
