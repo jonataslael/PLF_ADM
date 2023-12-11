@@ -317,29 +317,6 @@
             uploadFile();
         });
 
-        // function previewImage() {
-        //     var preview = document.getElementById('preview');
-        //     var fileInput = document.getElementById('arquivo');
-        //     var file = fileInput.files[0];
-
-        //     if (file) {
-        //         var reader = new FileReader();
-
-        //         reader.onload = function(e) {
-        //             preview.innerHTML = '<img src="' + e.target.result + '" alt="Imagem Selecionada">';
-        //         };
-
-        //         reader.readAsDataURL(file);
-        //     } else {
-        //         preview.innerHTML = '';
-        //     }
-        // }
-
-        // document.getElementById('files').addEventListener('change', function () {
-        //     var contador = document.getElementById('contador');
-        //     contador.textContent = this.files.length + ' imagem(ns) selecionada(s)';
-        // });
-
         function uploadFile($_POST['enviar']) {
           <?php
 
